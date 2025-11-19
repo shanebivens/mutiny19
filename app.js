@@ -417,6 +417,26 @@ function setupEventListeners() {
         badActorForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // SPAM PROTECTION 1: Honeypot check
+            const honeypot = document.getElementById('website').value;
+            if (honeypot) {
+                console.log('Bot detected via honeypot');
+                return; // Silently reject bots
+            }
+
+            // SPAM PROTECTION 2: Rate limiting (1 submission per hour)
+            const lastSubmitTime = localStorage.getItem('mutiny19_last_submit');
+            const currentTime = Date.now();
+            const oneHour = 60 * 60 * 1000;
+
+            if (lastSubmitTime && (currentTime - parseInt(lastSubmitTime)) < oneHour) {
+                const timeLeft = Math.ceil((oneHour - (currentTime - parseInt(lastSubmitTime))) / 60000);
+                formError.querySelector('p').textContent = `⏰ Please wait ${timeLeft} minutes before submitting another report.`;
+                formError.style.display = 'block';
+                formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
             // Get form data
             const formData = {
                 reportType: document.getElementById('reportType').value,
@@ -426,6 +446,21 @@ function setupEventListeners() {
                 timeline: document.getElementById('timeline').value,
                 evidence: document.getElementById('evidence').value || 'None provided'
             };
+
+            // SPAM PROTECTION 3: Minimum character requirements
+            if (formData.whatHappened.length < 50) {
+                formError.querySelector('p').textContent = '❌ Description must be at least 50 characters. Please provide more detail.';
+                formError.style.display = 'block';
+                formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            if (formData.name.length < 3) {
+                formError.querySelector('p').textContent = '❌ Please provide a valid name or company.';
+                formError.style.display = 'block';
+                formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
 
             // Hide previous messages
             formSuccess.style.display = 'none';
@@ -474,8 +509,23 @@ function setupEventListeners() {
 
                 // For now, just show success (remove this when webhook is connected)
                 console.log('Report data:', formData);
+
+                // Store submission time for rate limiting
+                localStorage.setItem('mutiny19_last_submit', currentTime.toString());
+
+                // Update success message based on report type
+                const successMessage = formData.reportType === 'champion'
+                    ? '✅ Champion celebration submitted! Thank you for recognizing exceptional support.'
+                    : '✅ Warning report submitted. Thank you for protecting the crew.';
+                formSuccess.querySelector('p').textContent = successMessage;
+
                 formSuccess.style.display = 'block';
                 badActorForm.reset();
+
+                // Reset to warning mode
+                if (warningBtn && reportTypeInput) {
+                    warningBtn.click();
+                }
 
                 // Scroll to success message
                 formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });

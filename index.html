@@ -336,6 +336,12 @@
                             <input type="text" id="actorName" name="actorName" required placeholder="Company name or individual">
                         </div>
 
+                        <!-- Honeypot field - hidden from real users, catches bots -->
+                        <div class="form-group" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+                            <label for="website">Website (leave blank)</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <div class="form-group">
                             <label for="whatHappened" id="descriptionLabel">What Happened (Facts Only) *</label>
                             <textarea id="whatHappened" name="whatHappened" rows="6" required placeholder="Describe what happened. Stick to verifiable facts."></textarea>
@@ -351,8 +357,14 @@
                             <textarea id="evidence" name="evidence" rows="3" placeholder="Links to documents, emails, or other evidence (if available)"></textarea>
                         </div>
 
+                        <!-- Optional: Add Cloudflare Turnstile here for additional spam protection
+                        <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY"></div>
+                        Docs: https://developers.cloudflare.com/turnstile/
+                        -->
+
                         <div class="form-notice">
                             <p>🔒 This is submitted <strong>anonymously</strong>. No personal information is collected or stored.</p>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">⏰ Rate limit: 1 submission per hour per browser</p>
                         </div>
 
                         <button type="submit" class="submit-report-btn" id="submitBtn">⚓ Submit Anonymous Report ⚓</button>
