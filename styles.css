@@ -7,12 +7,14 @@
 body {
     font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
-    color: #1a1510;
-    background: #e8dcc8;
+    color: #e0f7ff;
+    background: #0a0e1a;
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
-        linear-gradient(180deg, #f4ede0 0%, #e8dcc8 20%, #ddd0bb 50%, #e8dcc8 80%, #f4ede0 100%);
-    background-size: 400px 400px, 100% 100%;
+        radial-gradient(circle at 10% 20%, rgba(220, 20, 60, 0.12) 0%, transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(0, 217, 255, 0.10) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.05) 0%, transparent 40%),
+        linear-gradient(180deg, #0a0e1a 0%, #13152b 50%, #0a0e1a 100%);
+    background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
@@ -215,21 +217,20 @@ body::after {
 
 header {
     background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='6' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f5e6d3 0%, #ead5bb 50%, #f5e6d3 100%),
+        linear-gradient(135deg, rgba(10, 14, 26, 0.92) 0%, rgba(19, 21, 43, 0.95) 100%),
         url('https://images.squarespace-cdn.com/content/v1/6465536c4ab56d064ce9b2f6/a674212a-709c-4e8d-8106-5eaeac015d8c/Untitled+2.002.png?format=1500w');
-    background-size: 300px 300px, 100% 100%, cover;
-    background-position: center, center, center;
-    background-blend-mode: overlay, normal, multiply;
-    color: #1a1510;
+    background-size: cover;
+    background-position: center;
+    color: #00d9ff;
     padding: 3rem 2rem;
     text-align: center;
     box-shadow:
-        0 4px 20px rgba(220, 20, 60, 0.2),
-        0 4px 20px rgba(0, 217, 255, 0.15),
-        inset 0 0 100px rgba(42, 37, 32, 0.1);
-    border-top: 4px solid #dc143c;
-    border-bottom: 4px solid #00d9ff;
+        0 0 40px rgba(220, 20, 60, 0.4),
+        0 0 60px rgba(0, 217, 255, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(0, 217, 255, 0.2);
+    border-top: 3px solid #dc143c;
+    border-bottom: 3px solid #00d9ff;
     position: relative;
 }
 
@@ -286,23 +287,19 @@ header h1 {
 header p {
     font-size: 1.2rem;
     opacity: 0.9;
-    color: #2a2520;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    color: #a0d8e8;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
-/* Hero Section - Warmer Parchment */
+/* Hero Section */
 .hero-section {
-    background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.18'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f0dfc8 0%, #e6cfb0 50%, #f0dfc8 100%);
-    background-size: 350px 350px, 100% 100%;
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.98) 0%, rgba(19, 21, 43, 0.98) 100%);
     padding: 4rem 2rem;
-    border-top: 4px solid #00d9ff;
-    border-bottom: 4px solid #dc143c;
+    border-top: 3px solid #00d9ff;
+    border-bottom: 3px solid #dc143c;
     box-shadow:
-        0 4px 20px rgba(220, 20, 60, 0.2),
-        0 4px 20px rgba(0, 217, 255, 0.15),
-        inset 0 0 100px rgba(42, 37, 32, 0.08);
+        0 8px 32px rgba(220, 20, 60, 0.4),
+        0 8px 32px rgba(0, 217, 255, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -315,9 +312,9 @@ header p {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 30% 50%, rgba(220, 20, 60, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 70% 50%, rgba(0, 217, 255, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 30% 50%, rgba(220, 20, 60, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(0, 217, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255, 140, 0, 0.08) 0%, transparent 40%);
     pointer-events: none;
 }
 
@@ -377,18 +374,18 @@ header p {
 
 .hero-text p {
     font-size: 1.5rem;
-    color: #2a2520;
+    color: #b8d8e8;
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
 .hero-text .hero-subtitle {
     font-size: 1.2rem;
-    color: #3a342e;
+    color: #a0d8e8;
     line-height: 1.8;
     margin-top: 1.5rem;
     font-weight: 400;
-    opacity: 1;
+    opacity: 0.9;
 }
 
 /* Responsive Hero */
@@ -416,22 +413,18 @@ header p {
     }
 }
 
-/* Manifesto Section - Cooler Parchment */
+/* Manifesto Section */
 .manifesto {
-    background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.2'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #e6ddd0 0%, #d8cfc0 50%, #e6ddd0 100%);
-    background-size: 380px 380px, 100% 100%;
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(19, 21, 43, 0.95) 50%, rgba(10, 14, 26, 0.95) 100%);
     padding: 3rem 2rem;
     margin: 0;
-    border-top: 4px solid #dc143c;
-    border-bottom: 4px solid #00d9ff;
+    border-top: 3px solid #dc143c;
+    border-bottom: 3px solid #00d9ff;
     box-shadow:
-        0 4px 20px rgba(220, 20, 60, 0.2),
-        0 4px 20px rgba(0, 217, 255, 0.15),
-        inset 0 0 100px rgba(42, 37, 32, 0.1);
+        0 0 40px rgba(220, 20, 60, 0.3),
+        0 0 40px rgba(0, 217, 255, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.8);
     position: relative;
-    color: #1a1510;
 }
 
 .manifesto::before {
@@ -456,14 +449,12 @@ header p {
 
 .manifesto h2 {
     text-align: center;
-    color: #dc143c;
+    color: #00d9ff;
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 4px;
-    text-shadow:
-        0 0 20px rgba(220, 20, 60, 0.4),
-        1px 1px 2px rgba(42, 37, 32, 0.2);
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
 }
 
 .manifesto-grid {
@@ -474,22 +465,18 @@ header p {
 }
 
 .manifesto-box {
-    background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.0' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f8f0e3 0%, #ede5d8 100%);
-    background-size: 250px 250px, 100% 100%;
+    background: rgba(15, 20, 35, 0.8);
     padding: 1.5rem;
     border-radius: 12px;
-    border: 3px solid #00d9ff;
+    border: 2px solid #00d9ff;
     box-shadow:
-        0 0 15px rgba(0, 217, 255, 0.3),
-        0 0 12px rgba(220, 20, 60, 0.2),
-        0 4px 12px rgba(42, 37, 32, 0.2),
-        inset 0 0 30px rgba(42, 37, 32, 0.05);
+        0 0 20px rgba(0, 217, 255, 0.3),
+        0 0 15px rgba(220, 20, 60, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(0, 217, 255, 0.1);
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    color: #2a2520;
 }
 
 .manifesto-box::before {
@@ -519,24 +506,22 @@ header p {
 }
 
 .manifesto-box h3 {
-    color: #dc143c;
+    color: #00d9ff;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow:
-        0 0 20px rgba(220, 20, 60, 0.4),
-        1px 1px 2px rgba(42, 37, 32, 0.2);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
 }
 
 .manifesto-box p {
-    color: #3a342e;
+    color: #b8d8e8;
     line-height: 1.8;
     margin-bottom: 1rem;
 }
 
 .manifesto-box strong {
-    color: #dc143c;
+    color: #00d9ff;
     font-weight: 700;
 }
 
@@ -548,13 +533,13 @@ header p {
 }
 
 .manifesto-footer p {
-    color: #2a2520;
+    color: #b8d8e8;
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
 .manifesto-footer strong {
-    color: #dc143c;
+    color: #00d9ff;
 }
 
 .manifesto-link {
@@ -593,18 +578,14 @@ header p {
 }
 
 aside.filters {
-    background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f2e8d8 0%, #e8dcc8 100%);
-    background-size: 280px 280px, 100% 100%;
+    background: rgba(15, 20, 35, 0.9);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow:
-        0 0 15px rgba(220, 20, 60, 0.2),
-        0 0 15px rgba(0, 217, 255, 0.15),
-        0 4px 12px rgba(42, 37, 32, 0.2),
-        inset 0 0 30px rgba(42, 37, 32, 0.05);
-    border: 3px solid #dc143c;
+        0 0 30px rgba(0, 217, 255, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(0, 217, 255, 0.2);
+    border: 2px solid #00d9ff;
     width: 280px;
     height: fit-content;
     position: sticky;
@@ -613,15 +594,13 @@ aside.filters {
 
 aside.filters h2 {
     margin-bottom: 1.5rem;
-    color: #dc143c;
+    color: #00d9ff;
     font-size: 1.4rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    border-bottom: 3px solid #00d9ff;
+    border-bottom: 2px solid #00d9ff;
     padding-bottom: 0.8rem;
-    text-shadow:
-        0 0 15px rgba(220, 20, 60, 0.3),
-        1px 1px 2px rgba(42, 37, 32, 0.2);
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
     font-weight: 900;
 }
 
@@ -633,30 +612,27 @@ aside.filters h2 {
     display: block;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #2a2520;
+    color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .filter-group input[type="date"] {
     width: 100%;
     padding: 0.5rem;
-    border: 2px solid #dc143c;
-    background: rgba(255, 255, 255, 0.6);
-    color: #1a1510;
+    border: 1px solid #00d9ff;
+    background: rgba(10, 14, 26, 0.8);
+    color: #e0f7ff;
     border-radius: 6px;
     margin-bottom: 0.5rem;
     transition: all 0.3s;
-    box-shadow:
-        0 0 10px rgba(220, 20, 60, 0.15),
-        inset 0 1px 3px rgba(42, 37, 32, 0.1);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
 }
 
 .filter-group input[type="date"]:focus {
     outline: none;
     border-color: #00d9ff;
-    box-shadow:
-        0 0 15px rgba(0, 217, 255, 0.3),
-        0 0 10px rgba(220, 20, 60, 0.2);
-    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    background: rgba(10, 14, 26, 0.95);
 }
 
 .checkbox-group label {
@@ -665,18 +641,18 @@ aside.filters h2 {
     font-weight: 400;
     margin-bottom: 0.5rem;
     cursor: pointer;
-    color: #3a342e;
+    color: #a0d8e8;
     transition: color 0.3s;
 }
 
 .checkbox-group label:hover {
-    color: #1a1510;
+    color: #00d9ff;
 }
 
 .checkbox-group input[type="checkbox"] {
     margin-right: 0.5rem;
     cursor: pointer;
-    accent-color: #dc143c;
+    accent-color: #00d9ff;
 }
 
 .view-toggle {
@@ -687,9 +663,9 @@ aside.filters h2 {
 .view-toggle button {
     flex: 1;
     padding: 0.5rem;
-    border: 2px solid #dc143c;
-    background: rgba(255, 255, 255, 0.5);
-    color: #2a2520;
+    border: 2px solid #00d9ff;
+    background: rgba(10, 14, 26, 0.8);
+    color: #00d9ff;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.85rem;
@@ -697,33 +673,33 @@ aside.filters h2 {
     transition: all 0.3s;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 0 8px rgba(220, 20, 60, 0.15);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
 }
 
 .view-toggle button.active {
-    background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+    color: #0a0e1a;
     box-shadow:
-        0 0 15px rgba(220, 20, 60, 0.4),
-        0 4px 12px rgba(220, 20, 60, 0.3);
-    border-color: #dc143c;
+        0 0 20px rgba(0, 217, 255, 0.6),
+        0 4px 12px rgba(0, 217, 255, 0.4);
+    border-color: #00d9ff;
 }
 
 .view-toggle button:hover {
-    background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+    color: #0a0e1a;
     box-shadow:
-        0 0 15px rgba(220, 20, 60, 0.4),
-        0 4px 12px rgba(220, 20, 60, 0.3);
+        0 0 20px rgba(0, 217, 255, 0.6),
+        0 4px 12px rgba(0, 217, 255, 0.4);
     transform: translateY(-1px);
 }
 
 .btn-secondary {
     width: 100%;
     padding: 0.8rem;
-    background: linear-gradient(135deg, rgba(220, 20, 60, 0.15) 0%, rgba(255, 140, 0, 0.15) 100%);
-    border: 2px solid #dc143c;
-    color: #2a2520;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.2) 0%, rgba(255, 0, 128, 0.2) 100%);
+    border: 2px solid #00d9ff;
+    color: #00d9ff;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
@@ -731,31 +707,28 @@ aside.filters h2 {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     box-shadow:
-        0 0 12px rgba(220, 20, 60, 0.2),
-        0 4px 12px rgba(42, 37, 32, 0.2);
+        0 0 20px rgba(0, 217, 255, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.6);
     font-size: 0.95rem;
 }
 
 .btn-secondary:hover {
-    background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+    color: #0a0e1a;
     box-shadow:
-        0 0 20px rgba(220, 20, 60, 0.5),
-        0 6px 16px rgba(220, 20, 60, 0.3);
+        0 0 30px rgba(0, 217, 255, 0.8),
+        0 6px 16px rgba(0, 217, 255, 0.4);
     transform: translateY(-2px);
 }
 
 main.content {
     flex: 1;
-    background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f2e8d8 0%, #e8dcc8 100%);
-    background-size: 280px 280px, 100% 100%;
+    background: rgba(15, 20, 35, 0.9);
     border-radius: 12px;
     box-shadow:
-        0 0 20px rgba(220, 20, 60, 0.15),
-        0 8px 32px rgba(42, 37, 32, 0.2),
-        inset 0 1px 0 rgba(0, 217, 255, 0.1);
+        0 0 30px rgba(0, 217, 255, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(0, 217, 255, 0.2);
     border: 2px solid #00d9ff;
     overflow: hidden;
 }
@@ -780,13 +753,13 @@ main.content {
 }
 
 .list-container::-webkit-scrollbar-track {
-    background: rgba(232, 220, 200, 0.5);
+    background: rgba(10, 14, 26, 0.8);
 }
 
 .list-container::-webkit-scrollbar-thumb {
-    background: #dc143c;
+    background: #00d9ff;
     border-radius: 4px;
-    box-shadow: 0 0 8px rgba(220, 20, 60, 0.3);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .events-list {
@@ -794,19 +767,16 @@ main.content {
 }
 
 .event-card {
-    background:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.0' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E"),
-        linear-gradient(135deg, #f8f0e3 0%, #ede5d8 100%);
-    background-size: 250px 250px, 100% 100%;
-    border: 2px solid #dc143c;
+    background: rgba(10, 14, 26, 0.8);
+    border: 2px solid #00d9ff;
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
     transition: all 0.3s;
     box-shadow:
-        0 0 10px rgba(220, 20, 60, 0.15),
-        0 4px 12px rgba(42, 37, 32, 0.15);
+        0 0 15px rgba(0, 217, 255, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.6);
     position: relative;
 }
 
@@ -817,7 +787,7 @@ main.content {
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(180deg, #dc143c 0%, #00d9ff 100%);
+    background: linear-gradient(180deg, #00d9ff 0%, #ff0080 100%);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -828,21 +798,21 @@ main.content {
 
 .event-card:hover {
     box-shadow:
-        0 0 20px rgba(220, 20, 60, 0.3),
-        0 6px 20px rgba(42, 37, 32, 0.2);
+        0 0 30px rgba(0, 217, 255, 0.5),
+        0 6px 20px rgba(0, 0, 0, 0.8);
     transform: translateY(-2px);
-    border-color: #dc143c;
+    border-color: #0ff;
 }
 
 .event-card h3 {
-    color: #dc143c;
+    color: #00d9ff;
     margin-bottom: 0.5rem;
     font-weight: 700;
-    text-shadow: 0 0 8px rgba(220, 20, 60, 0.2);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
 .event-card p {
-    color: #3a342e;
+    color: #b8d8e8;
 }
 
 .event-meta {
