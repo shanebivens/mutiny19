@@ -1265,6 +1265,280 @@ footer {
     box-shadow: 0 0 25px rgba(255, 0, 128, 0.6);
 }
 
+/* Bad Actor Reporting Section */
+.reporting-section {
+    background: linear-gradient(135deg, rgba(15, 20, 35, 0.95) 0%, rgba(220, 20, 60, 0.2) 50%, rgba(15, 20, 35, 0.95) 100%);
+    padding: 4rem 2rem;
+    border-top: 3px solid #ff8c00;
+    border-bottom: 3px solid #dc143c;
+    box-shadow:
+        0 0 40px rgba(255, 140, 0, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+.reporting-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.reporting-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ff8c00;
+    margin-bottom: 1rem;
+    text-shadow:
+        0 0 30px rgba(255, 140, 0, 0.8),
+        0 0 60px rgba(220, 20, 60, 0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.reporting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.guidelines-box {
+    background: rgba(10, 14, 26, 0.8);
+    border: 2px solid rgba(255, 140, 0, 0.5);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+}
+
+.guidelines-box h3 {
+    color: #ff8c00;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+}
+
+.guideline-section {
+    margin-bottom: 2rem;
+}
+
+.guideline-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.guideline-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.guideline-section li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    color: #a0d8e8;
+    line-height: 1.6;
+}
+
+.guideline-section li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #ff8c00;
+    font-size: 1.2rem;
+}
+
+.legal-notice {
+    background: rgba(220, 20, 60, 0.2);
+    border: 2px solid #dc143c;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 2rem;
+    color: #ff8c00;
+    text-align: center;
+}
+
+.report-form-container {
+    background: rgba(10, 14, 26, 0.9);
+    border: 2px solid rgba(0, 217, 255, 0.4);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.bad-actor-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.report-type-toggle {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+}
+
+.toggle-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.toggle-btn {
+    flex: 1;
+    max-width: 200px;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    background: rgba(10, 14, 26, 0.6);
+    color: #a0d8e8;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    border-color: #00d9ff;
+    color: #00d9ff;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+}
+
+.toggle-btn.active {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.3) 0%, rgba(0, 217, 255, 0.1) 100%);
+    border-color: #00d9ff;
+    color: #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+}
+
+.toggle-btn.active.warning {
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.3) 0%, rgba(220, 20, 60, 0.1) 100%);
+    border-color: #ff8c00;
+    color: #ff8c00;
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+}
+
+.toggle-btn.active.champion {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.3) 0%, rgba(0, 217, 255, 0.1) 100%);
+    border-color: #00d9ff;
+    color: #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+}
+
+.bad-actor-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+    font-size: 0.95rem;
+}
+
+.bad-actor-form input[type="text"],
+.bad-actor-form select,
+.bad-actor-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    background: rgba(10, 14, 26, 0.8);
+    color: #e0f7ff;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.1);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.bad-actor-form input[type="text"]:focus,
+.bad-actor-form select:focus,
+.bad-actor-form textarea:focus {
+    outline: none;
+    border-color: #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+    background: rgba(10, 14, 26, 0.95);
+}
+
+.bad-actor-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-notice {
+    background: rgba(0, 217, 255, 0.1);
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.form-notice p {
+    margin: 0;
+    color: #00d9ff;
+    font-size: 0.9rem;
+}
+
+.submit-report-btn {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.8) 0%, rgba(255, 140, 0, 0.8) 100%);
+    color: #ffffff;
+    border: 2px solid #ff8c00;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 20px rgba(255, 140, 0, 0.4),
+        0 0 30px rgba(220, 20, 60, 0.3);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+}
+
+.submit-report-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 30px rgba(255, 140, 0, 0.6),
+        0 0 40px rgba(220, 20, 60, 0.5),
+        0 4px 16px rgba(0, 0, 0, 0.6);
+    border-color: #dc143c;
+}
+
+.submit-report-btn:active {
+    transform: translateY(0);
+}
+
+.form-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-message.success {
+    background: rgba(0, 217, 255, 0.2);
+    border: 2px solid #00d9ff;
+    color: #00d9ff;
+}
+
+.form-message.error {
+    background: rgba(220, 20, 60, 0.2);
+    border: 2px solid #dc143c;
+    color: #ff8c00;
+}
+
+@media (max-width: 968px) {
+    .reporting-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .reporting-section h2 {
+        font-size: 2rem;
+    }
+}
+
 /* Discord Section - Cyber Pirate Themed */
 .discord-section {
     background: linear-gradient(135deg, rgba(15, 20, 35, 0.95) 0%, rgba(88, 101, 242, 0.2) 50%, rgba(15, 20, 35, 0.95) 100%);

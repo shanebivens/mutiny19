@@ -239,6 +239,137 @@
         </div>
     </div>
 
+    <!-- Bad Actor Reporting Section -->
+    <section class="reporting-section">
+        <div class="reporting-content">
+            <h2>⚓ COMMUNITY INTEL ⚓</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #00d9ff;">Warn about bad actors OR celebrate champions. Share anonymously.</p>
+
+            <div class="reporting-grid">
+                <div class="guidelines-box">
+                    <h3 id="guidelinesTitle">📜 Community Guidelines</h3>
+
+                    <div id="warningGuidelines">
+                        <div class="guideline-section">
+                            <h4 style="color: #ff8c00;">⚠️ WARNING REPORTS:</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #a0d8e8;">Protect fellow founders by sharing experiences with bad actors:</p>
+                            <ul>
+                                <li>Unethical investors</li>
+                                <li>Vendors who didn't deliver</li>
+                                <li>Predatory advisors</li>
+                                <li>Partners who screwed you over</li>
+                                <li><strong>Actual experiences only</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guideline-section">
+                            <h4 style="color: #dc143c;">❌ DON'T SHARE:</h4>
+                            <ul>
+                                <li>Rumors or hearsay</li>
+                                <li>Personal vendettas</li>
+                                <li>Competitor bashing</li>
+                                <li>"They were just annoying"</li>
+                            </ul>
+                        </div>
+
+                        <div class="legal-notice">
+                            <strong>⚖️ LEGAL:</strong> Stick to facts. Say "They did X" not "They're a scammer"
+                        </div>
+                    </div>
+
+                    <div id="championGuidelines" style="display: none;">
+                        <div class="guideline-section">
+                            <h4 style="color: #00d9ff;">⭐ CELEBRATE CHAMPIONS:</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #a0d8e8;">Recognize those who truly support founders:</p>
+                            <ul>
+                                <li>Investors who provided real value beyond money</li>
+                                <li>Mentors who gave honest, helpful guidance</li>
+                                <li>Partners who delivered above and beyond</li>
+                                <li>Vendors who truly understood founder needs</li>
+                                <li><strong>Specific examples appreciated!</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="guideline-section">
+                            <h4 style="color: #00d9ff;">✨ WHAT MAKES A CHAMPION:</h4>
+                            <ul>
+                                <li>Went above and beyond their role</li>
+                                <li>Provided value without strings attached</li>
+                                <li>Genuinely supported founder-led growth</li>
+                                <li>Shared real wisdom, not just platitudes</li>
+                            </ul>
+                        </div>
+
+                        <div class="legal-notice" style="background: rgba(0, 217, 255, 0.2); border-color: #00d9ff;">
+                            <strong>💙 GRATITUDE:</strong> Celebrate those who make our ecosystem stronger
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-form-container">
+                    <form id="badActorForm" class="bad-actor-form">
+                        <!-- Report Type Toggle -->
+                        <div class="form-group report-type-toggle">
+                            <label style="margin-bottom: 1rem;">Report Type *</label>
+                            <div class="toggle-buttons">
+                                <button type="button" id="warningBtn" class="toggle-btn active">⚠️ Warning</button>
+                                <button type="button" id="championBtn" class="toggle-btn">⭐ Champion</button>
+                            </div>
+                            <input type="hidden" id="reportType" name="reportType" value="warning">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="actorType" id="typeLabel">Type *</label>
+                            <select id="actorType" name="actorType" required>
+                                <option value="">Select type...</option>
+                                <option value="Investor">Investor</option>
+                                <option value="Vendor">Vendor</option>
+                                <option value="Advisor">Advisor</option>
+                                <option value="Mentor">Mentor</option>
+                                <option value="Partner">Partner</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="actorName">Name / Company *</label>
+                            <input type="text" id="actorName" name="actorName" required placeholder="Company name or individual">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="whatHappened" id="descriptionLabel">What Happened (Facts Only) *</label>
+                            <textarea id="whatHappened" name="whatHappened" rows="6" required placeholder="Describe what happened. Stick to verifiable facts."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeline">Date / Timeline *</label>
+                            <input type="text" id="timeline" name="timeline" required placeholder="e.g., Q2 2024, March 2025, etc.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="evidence" id="evidenceLabel">Evidence (Optional)</label>
+                            <textarea id="evidence" name="evidence" rows="3" placeholder="Links to documents, emails, or other evidence (if available)"></textarea>
+                        </div>
+
+                        <div class="form-notice">
+                            <p>🔒 This is submitted <strong>anonymously</strong>. No personal information is collected or stored.</p>
+                        </div>
+
+                        <button type="submit" class="submit-report-btn" id="submitBtn">⚓ Submit Anonymous Report ⚓</button>
+                    </form>
+
+                    <div id="formSuccess" class="form-message success" style="display: none;">
+                        <p>✅ Report submitted successfully. Thank you for protecting the crew.</p>
+                    </div>
+
+                    <div id="formError" class="form-message error" style="display: none;">
+                        <p>❌ Error submitting report. Please try again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Discord CTA Section -->
     <section class="discord-section">
         <div class="discord-content">

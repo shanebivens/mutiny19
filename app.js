@@ -355,6 +355,138 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Bad Actor Reporting Form
+    const badActorForm = document.getElementById('badActorForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const warningBtn = document.getElementById('warningBtn');
+    const championBtn = document.getElementById('championBtn');
+    const reportTypeInput = document.getElementById('reportType');
+    const warningGuidelines = document.getElementById('warningGuidelines');
+    const championGuidelines = document.getElementById('championGuidelines');
+    const descriptionLabel = document.getElementById('descriptionLabel');
+    const evidenceLabel = document.getElementById('evidenceLabel');
+    const submitBtn = document.getElementById('submitBtn');
+    const whatHappenedTextarea = document.getElementById('whatHappened');
+
+    // Toggle between Warning and Champion modes
+    if (warningBtn && championBtn) {
+        warningBtn.addEventListener('click', () => {
+            // Update buttons
+            warningBtn.classList.add('active', 'warning');
+            warningBtn.classList.remove('champion');
+            championBtn.classList.remove('active', 'champion');
+
+            // Update hidden input
+            reportTypeInput.value = 'warning';
+
+            // Update guidelines
+            warningGuidelines.style.display = 'block';
+            championGuidelines.style.display = 'none';
+
+            // Update form labels
+            descriptionLabel.textContent = 'What Happened (Facts Only) *';
+            evidenceLabel.textContent = 'Evidence (Optional)';
+            submitBtn.textContent = '⚠️ Submit Warning Report';
+            whatHappenedTextarea.placeholder = 'Describe what happened. Stick to verifiable facts.';
+        });
+
+        championBtn.addEventListener('click', () => {
+            // Update buttons
+            championBtn.classList.add('active', 'champion');
+            championBtn.classList.remove('warning');
+            warningBtn.classList.remove('active', 'warning');
+
+            // Update hidden input
+            reportTypeInput.value = 'champion';
+
+            // Update guidelines
+            warningGuidelines.style.display = 'none';
+            championGuidelines.style.display = 'block';
+
+            // Update form labels
+            descriptionLabel.textContent = 'Why They\'re a Champion *';
+            evidenceLabel.textContent = 'Specific Examples (Optional)';
+            submitBtn.textContent = '⭐ Celebrate Champion';
+            whatHappenedTextarea.placeholder = 'Describe how they went above and beyond to support you as a founder.';
+        });
+    }
+
+    if (badActorForm) {
+        badActorForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const formData = {
+                reportType: document.getElementById('reportType').value,
+                type: document.getElementById('actorType').value,
+                name: document.getElementById('actorName').value,
+                whatHappened: document.getElementById('whatHappened').value,
+                timeline: document.getElementById('timeline').value,
+                evidence: document.getElementById('evidence').value || 'None provided'
+            };
+
+            // Hide previous messages
+            formSuccess.style.display = 'none';
+            formError.style.display = 'none';
+
+            try {
+                // TODO: Replace with actual Discord webhook URL
+                const webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+
+                // Format message for Discord based on type
+                let discordMessage;
+                if (formData.reportType === 'champion') {
+                    discordMessage = {
+                        content: `**⭐ CHAMPION CELEBRATION ⭐**\n\n` +
+                                 `**Type:** ${formData.type}\n` +
+                                 `**Name/Company:** ${formData.name}\n` +
+                                 `**Timeline:** ${formData.timeline}\n\n` +
+                                 `**Why They're a Champion:**\n${formData.whatHappened}\n\n` +
+                                 `**Specific Examples:** ${formData.evidence}\n\n` +
+                                 `*Celebration submitted anonymously via Mutiny19.com* 🎉`
+                    };
+                } else {
+                    discordMessage = {
+                        content: `**⚠️ WARNING REPORT ⚠️**\n\n` +
+                                 `**Type:** ${formData.type}\n` +
+                                 `**Name/Company:** ${formData.name}\n` +
+                                 `**Timeline:** ${formData.timeline}\n\n` +
+                                 `**What Happened:**\n${formData.whatHappened}\n\n` +
+                                 `**Evidence:** ${formData.evidence}\n\n` +
+                                 `*Report submitted anonymously via Mutiny19.com*`
+                    };
+                }
+
+                // Uncomment when webhook is ready:
+                // const response = await fetch(webhookUrl, {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify(discordMessage)
+                // });
+
+                // if (!response.ok) {
+                //     throw new Error('Failed to submit report');
+                // }
+
+                // For now, just show success (remove this when webhook is connected)
+                console.log('Report data:', formData);
+                formSuccess.style.display = 'block';
+                badActorForm.reset();
+
+                // Scroll to success message
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } catch (error) {
+                console.error('Error submitting report:', error);
+                formError.style.display = 'block';
+                formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    }
 }
 
 // Set view mode
