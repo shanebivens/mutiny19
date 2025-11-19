@@ -5,59 +5,92 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Georgia', 'Palatino', serif;
     line-height: 1.6;
-    color: #e8e6e3;
-    background: #0a1128;
+    color: #f4e8d0;
+    background: #1a0f0a;
     background-image:
-        linear-gradient(to bottom, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.98)),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="%23001524" d="M0,0 C150,80 350,20 600,60 C850,100 1050,40 1200,80 L1200,120 L0,120 Z"/></svg>');
+        linear-gradient(to bottom, rgba(26, 15, 10, 0.85), rgba(26, 15, 10, 0.9)),
+        url('https://images.squarespace-cdn.com/content/v1/6465536c4ab56d064ce9b2f6/a674212a-709c-4e8d-8106-5eaeac015d8c/Untitled+2.002.png');
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 234, 167, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 234, 167, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 header {
-    background: linear-gradient(135deg, #001524 0%, #15616d 50%, #001524 100%);
+    background:
+        linear-gradient(135deg, rgba(120, 41, 15, 0.9) 0%, rgba(78, 41, 15, 0.95) 100%),
+        repeating-linear-gradient(90deg, #3d2817 0px, #2d1810 2px, #3d2817 4px);
     color: #ffeaa7;
     padding: 3rem 2rem;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    border-bottom: 3px solid #78290f;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,234,167,0.1);
+    border-top: 4px solid #d4af37;
+    border-bottom: 6px solid #d4af37;
     position: relative;
 }
 
 header::before {
-    content: "⚓";
+    content: "🏴‍☠️";
     position: absolute;
     top: 1rem;
     left: 2rem;
-    font-size: 2rem;
-    opacity: 0.3;
+    font-size: 3rem;
+    opacity: 0.4;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
 }
 
 header::after {
-    content: "⚓";
+    content: "🏴‍☠️";
     position: absolute;
     top: 1rem;
     right: 2rem;
-    font-size: 2rem;
-    opacity: 0.3;
+    font-size: 3rem;
+    opacity: 0.4;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 0.5rem;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 4px;
+    text-shadow:
+        3px 3px 0px #78290f,
+        6px 6px 12px rgba(0,0,0,0.9);
     color: #ffeaa7;
+    font-family: 'Georgia', serif;
 }
 
 header p {
     font-size: 1.2rem;
     opacity: 0.95;
     font-style: italic;
-    color: #dfe6e9;
+    color: #f4e8d0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-family: 'Georgia', serif;
 }
 
 /* Manifesto Section */
@@ -172,11 +205,18 @@ header p {
 }
 
 aside.filters {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background:
+        linear-gradient(135deg, rgba(61, 40, 23, 0.95) 0%, rgba(45, 24, 16, 0.98) 100%),
+        repeating-linear-gradient(90deg, #3d2817 0px, #2d1810 2px, #3d2817 4px);
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    border: 2px solid #78290f;
+    border-radius: 12px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.8),
+        inset 0 2px 4px rgba(212, 175, 55, 0.2),
+        inset 0 -2px 4px rgba(0,0,0,0.5);
+    border: 3px solid #d4af37;
+    border-top-width: 4px;
+    border-bottom-width: 6px;
     width: 280px;
     height: fit-content;
     position: sticky;
@@ -186,11 +226,14 @@ aside.filters {
 aside.filters h2 {
     margin-bottom: 1.5rem;
     color: #ffeaa7;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 2px solid #78290f;
-    padding-bottom: 0.5rem;
+    letter-spacing: 2px;
+    border-bottom: 3px solid #d4af37;
+    padding-bottom: 0.8rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    font-family: 'Georgia', serif;
+    font-weight: 900;
 }
 
 .filter-group {
