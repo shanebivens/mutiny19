@@ -104,6 +104,125 @@
       "url": "https://www.ventureclub.org/events-2-1",
       "enabled": true,
       "description": "Venture capital and entrepreneur events (High Alpha, Elevate, etc.)"
+    },
+    {
+      "name": "IU Bloomington Innovation & Entrepreneurship",
+      "type": "custom",
+      "url": "https://business.indiana.edu/events/index.html",
+      "enabled": true,
+      "description": "Indiana University Kelley School entrepreneur events"
+    },
+    {
+      "name": "Purdue Foundry",
+      "type": "custom",
+      "url": "https://www.purduefoundry.com/events",
+      "enabled": true,
+      "description": "Purdue University startup accelerator events"
+    },
+    {
+      "name": "Notre Dame IDEA Center",
+      "type": "custom",
+      "url": "https://ideacenter.nd.edu/events/",
+      "enabled": true,
+      "description": "Notre Dame Innovation, Design, Entrepreneurship events"
+    },
+    {
+      "name": "Ball State Entrepreneurship",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/ball-state-university-31655145715",
+      "enabled": true,
+      "description": "Ball State University entrepreneur events"
+    },
+    {
+      "name": "IUPUI Innovation & Entrepreneurship",
+      "type": "custom",
+      "url": "https://www.iupui.edu/events",
+      "enabled": true,
+      "description": "IUPUI entrepreneur and innovation events"
+    },
+    {
+      "name": "Elevate Ventures Events",
+      "type": "custom",
+      "url": "https://elevateventures.com/events/",
+      "enabled": true,
+      "description": "Statewide VC events and pitch competitions"
+    },
+    {
+      "name": "High Alpha Innovation Events",
+      "type": "custom",
+      "url": "https://highalpha.com/events",
+      "enabled": true,
+      "description": "High Alpha venture studio events"
+    },
+    {
+      "name": "Fort Wayne 1 Million Cups",
+      "type": "custom",
+      "url": "https://www.1millioncups.com/fortwayne",
+      "enabled": true,
+      "description": "Fort Wayne weekly entrepreneur meetups"
+    },
+    {
+      "name": "Bloomington 1 Million Cups",
+      "type": "custom",
+      "url": "https://www.1millioncups.com/bloomington",
+      "enabled": true,
+      "description": "Bloomington weekly entrepreneur meetups"
+    },
+    {
+      "name": "Eventbrite Fort Wayne Entrepreneurs",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--fort-wayne/entrepreneurs/",
+      "enabled": true,
+      "description": "Fort Wayne entrepreneur events"
+    },
+    {
+      "name": "Eventbrite Bloomington Startups",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--bloomington/startup-events/",
+      "enabled": true,
+      "description": "Bloomington startup events"
+    },
+    {
+      "name": "Eventbrite Carmel Business Networking",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--carmel/business-networking/",
+      "enabled": true,
+      "description": "Carmel business networking events"
+    },
+    {
+      "name": "Eventbrite South Bend Entrepreneurs",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--south-bend/entrepreneurs/",
+      "enabled": true,
+      "description": "South Bend entrepreneur events"
+    },
+    {
+      "name": "Eventbrite Evansville Startups",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--evansville/startup-events/",
+      "enabled": true,
+      "description": "Evansville startup events"
+    },
+    {
+      "name": "Startup Grind Indianapolis",
+      "type": "custom",
+      "url": "https://www.startupgrind.com/indianapolis/",
+      "enabled": true,
+      "description": "Monthly founder meetups and speaker events"
+    },
+    {
+      "name": "Indie Hall Bloomington",
+      "type": "custom",
+      "url": "https://www.indiehall.org/events",
+      "enabled": false,
+      "description": "Bloomington coworking events (may require login)"
+    },
+    {
+      "name": "The Union 525 Events",
+      "type": "custom",
+      "url": "https://theunion525.com/events",
+      "enabled": true,
+      "description": "Indianapolis coworking and entrepreneur events"
     }
   ],
   "keywords": [
