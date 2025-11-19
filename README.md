@@ -39,7 +39,7 @@ cd mutiny19
 4. Select the `main` branch and `/ (root)` folder
 5. Click "Save"
 
-Your site will be live in a few minutes at `https://shanebivens.github.io/mutiny19/`
+Your site will be live in a few minutes at `https://mutiny19.github.io/mutiny19/`
 
 ### 3. Enable GitHub Actions
 
