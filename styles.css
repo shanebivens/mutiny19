@@ -148,6 +148,121 @@ header p {
     text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
 }
 
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.98) 0%, rgba(19, 21, 43, 0.98) 100%);
+    padding: 4rem 2rem;
+    border-bottom: 3px solid #00d9ff;
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 30% 50%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 3px solid #00d9ff;
+    box-shadow:
+        0 0 40px rgba(0, 217, 255, 0.5),
+        0 0 80px rgba(255, 0, 128, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.02);
+    box-shadow:
+        0 0 60px rgba(0, 217, 255, 0.7),
+        0 0 100px rgba(255, 0, 128, 0.5),
+        0 12px 48px rgba(0, 0, 0, 0.9);
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.hero-text h2 {
+    font-size: 8rem;
+    font-weight: 900;
+    color: #00d9ff;
+    margin-bottom: 1rem;
+    text-shadow:
+        0 0 30px rgba(0, 217, 255, 0.8),
+        0 0 60px rgba(0, 217, 255, 0.4);
+    letter-spacing: 1rem;
+    line-height: 1;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    color: #b8d8e8;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero-text .hero-subtitle {
+    font-size: 1.2rem;
+    color: #a0d8e8;
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Responsive Hero */
+@media (max-width: 968px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-text h2 {
+        font-size: 5rem;
+        letter-spacing: 0.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+
+    .hero-text .hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
 /* Manifesto Section */
 .manifesto {
     background: linear-gradient(135deg, rgba(10, 14, 26, 0.95) 0%, rgba(19, 21, 43, 0.95) 50%, rgba(10, 14, 26, 0.95) 100%);
