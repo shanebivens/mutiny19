@@ -81,29 +81,29 @@
       "name": "16 Tech Innovation District",
       "type": "custom",
       "url": "https://16tech.com/calendar/",
-      "enabled": false,
-      "description": "Events at Indianapolis innovation district (requires JavaScript rendering)"
+      "enabled": true,
+      "description": "Events at Indianapolis innovation district"
     },
     {
       "name": "The Mill at Dimension Mill",
       "type": "custom",
       "url": "https://www.dimensionmill.org/",
       "enabled": false,
-      "description": "Bloomington coworking and entrepreneur events (requires JavaScript rendering)"
+      "description": "Bloomington coworking and entrepreneur events (login may be required)"
     },
     {
       "name": "Launch Fishers",
       "type": "custom",
       "url": "https://www.launchfishers.com/events-calendar/",
-      "enabled": false,
-      "description": "Fishers coworking, IoT Lab, and entrepreneur events (requires JavaScript rendering)"
+      "enabled": true,
+      "description": "Fishers coworking, IoT Lab, and entrepreneur events"
     },
     {
       "name": "Venture Club of Indiana",
       "type": "custom",
       "url": "https://www.ventureclub.org/events-2-1",
-      "enabled": false,
-      "description": "Venture capital and entrepreneur events (requires JavaScript rendering)"
+      "enabled": true,
+      "description": "Venture capital and entrepreneur events (High Alpha, Elevate, etc.)"
     }
   ],
   "keywords": [

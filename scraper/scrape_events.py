@@ -14,6 +14,14 @@ from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 import re
 
+# Playwright imports (optional - only used for JavaScript-heavy sites)
+try:
+    from playwright.sync_api import sync_playwright
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    PLAYWRIGHT_AVAILABLE = False
+    print("Warning: Playwright not installed. JavaScript-heavy sites will be skipped.")
+
 class EventScraper:
     def __init__(self, sources_file='sources.json'):
         """Initialize the scraper with sources configuration"""
@@ -25,6 +33,56 @@ class EventScraper:
 
         self.events = []
         self.seen_events = set()  # To avoid duplicates
+
+    def fetch_with_playwright(self, url: str, wait_selector: str = None, wait_time: int = 3000) -> str:
+        """
+        Fetch a URL using Playwright to render JavaScript
+
+        Args:
+            url: URL to fetch
+            wait_selector: CSS selector to wait for (optional)
+            wait_time: Time to wait in milliseconds (default 3000ms)
+
+        Returns:
+            Rendered HTML content
+        """
+        if not PLAYWRIGHT_AVAILABLE:
+            print(f"  Playwright not available, skipping {url}")
+            return None
+
+        try:
+            with sync_playwright() as p:
+                # Launch browser in headless mode
+                browser = p.chromium.launch(headless=True)
+                page = browser.new_page()
+
+                # Set user agent
+                page.set_extra_http_headers({
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                })
+
+                # Navigate to URL
+                page.goto(url, wait_until='networkidle', timeout=30000)
+
+                # Wait for specific selector if provided
+                if wait_selector:
+                    try:
+                        page.wait_for_selector(wait_selector, timeout=wait_time)
+                    except:
+                        print(f"  Selector {wait_selector} not found, continuing anyway")
+                else:
+                    # Just wait a bit for dynamic content to load
+                    page.wait_for_timeout(wait_time)
+
+                # Get the rendered HTML
+                content = page.content()
+                browser.close()
+
+                return content
+
+        except Exception as e:
+            print(f"  Playwright error: {e}")
+            return None
 
     def scrape_all(self) -> List[Dict[str, Any]]:
         """Scrape all enabled sources"""
@@ -348,47 +406,64 @@ class EventScraper:
             return next_wed.replace(hour=9, minute=0, second=0, microsecond=0)
 
     def scrape_16tech(self, source: Dict[str, Any]):
-        """Scrape 16 Tech Innovation District events (Tribe Events Calendar)"""
+        """Scrape 16 Tech Innovation District events (Tribe Events Calendar with JavaScript)"""
         try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-            response = requests.get(source['url'], headers=headers, timeout=10)
-            soup = BeautifulSoup(response.content, 'html.parser')
+            # Use Playwright to render JavaScript
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='.tribe-events-calendar-month__calendar-event',
+                wait_time=5000
+            )
 
-            # 16 Tech uses Tribe Events - look for event containers
-            event_items = soup.find_all('div', class_='event')
+            if not html_content:
+                print(f"  Could not fetch 16 Tech with Playwright")
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+
+            # Look for Tribe Events calendar events
+            event_items = soup.find_all('div', class_=lambda x: x and 'tribe-events-calendar-month__calendar-event' in x)
 
             print(f"Found {len(event_items)} potential events at 16 Tech")
 
             for item in event_items[:15]:
                 try:
-                    # Find title link
-                    link = item.find('a', href=True)
+                    # Find title in the event
+                    title_elem = item.find('h3', class_='tribe-events-calendar-month__calendar-event-title')
+                    if not title_elem:
+                        title_elem = item.find('a', class_='tribe-events-calendar-month__calendar-event-title-link')
+
+                    if not title_elem:
+                        continue
+
+                    # Get title and link
+                    link = title_elem if title_elem.name == 'a' else title_elem.find('a')
                     if not link:
                         continue
 
                     title = link.get_text(strip=True)
-                    url = link['href']
+                    url = link.get('href', '')
                     if url.startswith('/'):
                         url = 'https://16tech.com' + url
 
-                    # Find date - look for paragraph with date/time
-                    date_elem = item.find('p')
+                    # Find date/time - look for datetime attribute or text
+                    time_elem = item.find('time')
                     event_date = None
-                    if date_elem:
-                        date_str = date_elem.get_text(strip=True)
-                        # Parse format like "November 20 @ 12:00 pm - 1:30 pm"
+                    if time_elem:
+                        date_str = time_elem.get('datetime', '') or time_elem.get_text(strip=True)
                         event_date = self._parse_date(date_str)
 
                     if not event_date or event_date < datetime.now():
                         continue
 
-                    # Description is either in a p tag or title itself
-                    desc_paras = item.find_all('p')
+                    # Description - use title for now (could fetch individual page for more details)
                     description = title
-                    if len(desc_paras) > 1:
-                        description = desc_paras[1].get_text(strip=True)[:500]
+
+                    # Check for cost/free
+                    cost_elem = item.find(class_=re.compile('cost|price'))
+                    if cost_elem:
+                        cost_text = cost_elem.get_text(strip=True)
+                        description = f"{title}. {cost_text}"
 
                     event_data = {
                         'title': title,
@@ -474,13 +549,20 @@ class EventScraper:
             print(f"Error fetching The Mill: {e}")
 
     def scrape_launch_fishers(self, source: Dict[str, Any]):
-        """Scrape Launch Fishers events calendar"""
+        """Scrape Launch Fishers events calendar (JavaScript rendered)"""
         try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-            response = requests.get(source['url'], headers=headers, timeout=10)
-            soup = BeautifulSoup(response.content, 'html.parser')
+            # Use Playwright to render JavaScript
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='h3',
+                wait_time=5000
+            )
+
+            if not html_content:
+                print(f"  Could not fetch Launch Fishers with Playwright")
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
 
             # Look for event links and headings
             event_links = soup.find_all('a', href=re.compile('/event/'))
@@ -607,13 +689,20 @@ class EventScraper:
             print(f"Error fetching Indiana IoT Lab: {e}")
 
     def scrape_venture_club(self, source: Dict[str, Any]):
-        """Scrape Venture Club of Indiana events (Squarespace eventlist)"""
+        """Scrape Venture Club of Indiana events (Squarespace with JavaScript)"""
         try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-            response = requests.get(source['url'], headers=headers, timeout=10)
-            soup = BeautifulSoup(response.content, 'html.parser')
+            # Use Playwright to render Squarespace JavaScript
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='.eventlist-item',
+                wait_time=5000
+            )
+
+            if not html_content:
+                print(f"  Could not fetch Venture Club with Playwright")
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
 
             # Venture Club uses Squarespace eventlist structure
             event_items = soup.find_all('div', class_='eventlist-item')
