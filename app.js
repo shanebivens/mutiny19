@@ -2,7 +2,7 @@
 let map;
 let eventsData = [];
 let markers = [];
-let currentView = 'map'; // 'map', 'list', or 'both'
+let currentView = 'list'; // 'map', 'list', or 'both'
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async () => {

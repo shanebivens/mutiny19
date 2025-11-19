@@ -1313,6 +1313,37 @@ class EventScraper:
             if 'id' not in event:
                 event['id'] = str(abs(hash(event.get('title', '') + event.get('date', ''))))
 
+    def filter_past_events(self):
+        """Remove events that are more than 7 days in the past"""
+        cutoff_date = datetime.now() - timedelta(days=7)
+        original_count = len(self.events)
+
+        filtered_events = []
+        for event in self.events:
+            try:
+                event_date_str = event.get('date', '')
+                if not event_date_str or event_date_str == 'TBD':
+                    # Keep events without dates
+                    filtered_events.append(event)
+                    continue
+
+                # Parse the event date
+                event_date = date_parser.parse(event_date_str)
+
+                # Keep events that are within 7 days in the past or in the future
+                if event_date >= cutoff_date:
+                    filtered_events.append(event)
+                else:
+                    print(f"  Filtered out past event: {event.get('title', 'Unknown')} ({event_date.strftime('%Y-%m-%d')})")
+            except:
+                # If we can't parse the date, keep the event
+                filtered_events.append(event)
+
+        self.events = filtered_events
+        filtered_count = original_count - len(filtered_events)
+        if filtered_count > 0:
+            print(f"Filtered out {filtered_count} past events")
+
     def save_to_json(self, output_file='../events.json'):
         """Save scraped events to JSON file"""
         output = {
@@ -1333,6 +1364,7 @@ def main():
         scraper = EventScraper()
         scraper.scrape_all()
         scraper.enrich_events()
+        scraper.filter_past_events()
         scraper.save_to_json()
         print("Scraping completed successfully!")
         return 0

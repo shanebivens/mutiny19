@@ -73,8 +73,8 @@
             <div class="filter-group">
                 <label>🧭 How Ya Wanna See It?</label>
                 <div class="view-toggle">
-                    <button id="mapViewBtn" class="active">Map</button>
-                    <button id="listViewBtn">List</button>
+                    <button id="mapViewBtn">Map</button>
+                    <button id="listViewBtn" class="active">List</button>
                     <button id="bothViewBtn">Both</button>
                 </div>
             </div>
@@ -84,11 +84,11 @@
 
         <main class="content">
             <p style="padding: 1rem; margin: 0; text-align: center; font-size: 0.9rem; color: #3a342e; background: rgba(232, 220, 200, 0.5); border-bottom: 2px solid rgba(220, 20, 60, 0.2);">⚓ Auto-pillaged from the web daily. Last raid: <span id="lastUpdate">Loading...</span> ⚓</p>
-            <div id="mapContainer" class="map-container">
+            <div id="mapContainer" class="map-container" style="display: none;">
                 <div id="map"></div>
             </div>
 
-            <div id="listContainer" class="list-container" style="display: none;">
+            <div id="listContainer" class="list-container">
                 <div id="eventsList" class="events-list"></div>
             </div>
         </main>
