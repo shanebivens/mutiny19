@@ -218,6 +218,30 @@ class EventScraper:
             self.scrape_launch_fishers(source)
         elif 'Venture Club' in name:
             self.scrape_venture_club(source)
+        elif 'Purdue Foundry' in name:
+            self.scrape_purdue_foundry(source)
+        elif 'Notre Dame' in name or 'IDEA Center' in name:
+            self.scrape_notre_dame_idea(source)
+        elif 'IU Bloomington' in name or 'Indiana University' in name:
+            self.scrape_iu_bloomington(source)
+        elif 'IUPUI' in name:
+            self.scrape_iupui(source)
+        elif 'Elevate Ventures' in name:
+            self.scrape_elevate_ventures(source)
+        elif 'High Alpha' in name:
+            self.scrape_high_alpha(source)
+        elif 'Startup Grind' in name:
+            self.scrape_startup_grind(source)
+        elif 'Union 525' in name:
+            self.scrape_union_525(source)
+        elif 'SBDC' in name:
+            self.scrape_sbdc(source)
+        elif 'Indy Chamber' in name:
+            self.scrape_indy_chamber(source)
+        elif 'Downtown Indy' in name:
+            self.scrape_downtown_indy(source)
+        elif 'Visit Indy' in name:
+            self.scrape_visit_indy(source)
         else:
             print(f"No custom scraper implemented for {name}")
 
@@ -792,6 +816,443 @@ class EventScraper:
         if identifier not in self.seen_events:
             self.seen_events.add(identifier)
             self.events.append(event_data)
+
+    def scrape_purdue_foundry(self, source: Dict[str, Any]):
+        """Scrape Purdue Foundry events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            # Look for event listings - Foundry likely uses divs with event in class name
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event|calendar|listing', re.I))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'h4', 'a'], class_=re.compile('title|name'))
+                    if not title_elem:
+                        continue
+
+                    title = title_elem.get_text(strip=True)
+                    if not title or len(title) < 5:
+                        continue
+
+                    # Try to find date
+                    date_elem = item.find(['time', 'span', 'div'], class_=re.compile('date|time'))
+
+                    event_data = {
+                        'title': title,
+                        'date': date_elem.get_text(strip=True) if date_elem else 'TBD',
+                        'location': {'name': 'Purdue Foundry', 'address': 'West Lafayette, IN'},
+                        'url': source['url'],
+                        'organizer': 'Purdue Foundry',
+                        'source': 'Purdue Foundry'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Purdue Foundry")
+        except Exception as e:
+            print(f"  Error scraping Purdue Foundry: {e}")
+
+    def scrape_notre_dame_idea(self, source: Dict[str, Any]):
+        """Scrape Notre Dame IDEA Center events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event|calendar'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'h4', 'a'])
+                    if not title_elem:
+                        continue
+
+                    title = title_elem.get_text(strip=True)
+                    if not title or len(title) < 5:
+                        continue
+
+                    event_data = {
+                        'title': title,
+                        'location': {'name': 'Notre Dame IDEA Center', 'address': 'South Bend, IN'},
+                        'url': source['url'],
+                        'organizer': 'Notre Dame IDEA Center',
+                        'source': 'Notre Dame'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Notre Dame IDEA Center")
+        except Exception as e:
+            print(f"  Error scraping Notre Dame: {e}")
+
+    def scrape_iu_bloomington(self, source: Dict[str, Any]):
+        """Scrape IU Bloomington business events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article', 'li'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'h4', 'a'])
+                    if not title_elem:
+                        continue
+
+                    title = title_elem.get_text(strip=True)
+                    if not title:
+                        continue
+
+                    event_data = {
+                        'title': title,
+                        'location': {'name': 'IU Kelley School', 'address': 'Bloomington, IN'},
+                        'url': source['url'],
+                        'organizer': 'IU Bloomington',
+                        'source': 'IU Bloomington'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at IU Bloomington")
+        except Exception as e:
+            print(f"  Error scraping IU Bloomington: {e}")
+
+    def scrape_iupui(self, source: Dict[str, Any]):
+        """Scrape IUPUI events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'IUPUI', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'IUPUI',
+                        'source': 'IUPUI'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at IUPUI")
+        except Exception as e:
+            print(f"  Error scraping IUPUI: {e}")
+
+    def scrape_elevate_ventures(self, source: Dict[str, Any]):
+        """Scrape Elevate Ventures events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'Indiana (Statewide)', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'Elevate Ventures',
+                        'source': 'Elevate Ventures'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Elevate Ventures")
+        except Exception as e:
+            print(f"  Error scraping Elevate Ventures: {e}")
+
+    def scrape_high_alpha(self, source: Dict[str, Any]):
+        """Scrape High Alpha events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'High Alpha', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'High Alpha',
+                        'source': 'High Alpha'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at High Alpha")
+        except Exception as e:
+            print(f"  Error scraping High Alpha: {e}")
+
+    def scrape_startup_grind(self, source: Dict[str, Any]):
+        """Scrape Startup Grind Indianapolis events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'Indianapolis', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'Startup Grind Indianapolis',
+                        'source': 'Startup Grind'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Startup Grind")
+        except Exception as e:
+            print(f"  Error scraping Startup Grind: {e}")
+
+    def scrape_union_525(self, source: Dict[str, Any]):
+        """Scrape The Union 525 events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'The Union 525', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'The Union 525',
+                        'source': 'The Union 525'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at The Union 525")
+        except Exception as e:
+            print(f"  Error scraping The Union 525: {e}")
+
+    def scrape_sbdc(self, source: Dict[str, Any]):
+        """Scrape Indiana SBDC events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event|training|workshop'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'Indiana SBDC', 'address': 'Indiana (Statewide)'},
+                        'url': source['url'],
+                        'organizer': 'Indiana SBDC',
+                        'source': 'SBDC'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at SBDC")
+        except Exception as e:
+            print(f"  Error scraping SBDC: {e}")
+
+    def scrape_indy_chamber(self, source: Dict[str, Any]):
+        """Scrape Indy Chamber events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'Indianapolis', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'Indy Chamber',
+                        'source': 'Indy Chamber'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Indy Chamber")
+        except Exception as e:
+            print(f"  Error scraping Indy Chamber: {e}")
+
+    def scrape_downtown_indy(self, source: Dict[str, Any]):
+        """Scrape Downtown Indy events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'Downtown Indianapolis', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'Downtown Indy',
+                        'source': 'Downtown Indy'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Downtown Indy")
+        except Exception as e:
+            print(f"  Error scraping Downtown Indy: {e}")
+
+    def scrape_visit_indy(self, source: Dict[str, Any]):
+        """Scrape Visit Indy food and drink events"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='[class*="event"]',
+                wait_time=4000
+            )
+            if not html_content:
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+            event_items = soup.find_all(['div', 'article'], class_=re.compile('event'))
+
+            for item in event_items[:15]:
+                try:
+                    title_elem = item.find(['h2', 'h3', 'a'])
+                    if not title_elem:
+                        continue
+
+                    event_data = {
+                        'title': title_elem.get_text(strip=True),
+                        'location': {'name': 'Indianapolis', 'address': 'Indianapolis, IN'},
+                        'url': source['url'],
+                        'organizer': 'Visit Indy',
+                        'source': 'Visit Indy'
+                    }
+                    self.add_event(event_data)
+                except:
+                    continue
+
+            print(f"  Found {len(event_items)} potential events at Visit Indy")
+        except Exception as e:
+            print(f"  Error scraping Visit Indy: {e}")
 
     def enrich_events(self):
         """Enrich events with additional data and geocoding"""
