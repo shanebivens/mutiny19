@@ -20,14 +20,14 @@ A free, interactive map and list of entrepreneurship events across Indiana. The 
 ## Live Demo
 
 Once deployed, your site will be available at:
-`https://shanebivens.github.io/mutiny19/`
+`https://mutiny19.github.io/mutiny19/`
 
 ## Quick Start
 
 ### 1. Fork or Clone This Repository
 
 ```bash
-git clone https://github.com/shanebivens/mutiny19.git
+git clone https://github.com/mutiny19/mutiny19.git
 cd mutiny19
 ```
 
@@ -229,7 +229,7 @@ Built with:
 ## Support
 
 For issues or questions:
-1. Check existing [Issues](https://github.com/shanebivens/mutiny19/issues)
+1. Check existing [Issues](https://github.com/mutiny19/mutiny19/issues)
 2. Create a new issue with details
 3. Include error messages and screenshots if applicable
 
