@@ -1,4 +1,137 @@
 {
   "lastUpdated": "2025-11-19T16:33:55.839433",
-  "events": []
+  "events": [
+    {
+      "id": "1",
+      "title": "Indianapolis Startup Grind Monthly Meetup",
+      "description": "Join fellow entrepreneurs for networking, pizza, and insights from local startup founders. This month's featured speaker will discuss scaling SaaS businesses.",
+      "date": "2025-11-25T18:00:00",
+      "endDate": "2025-11-25T20:00:00",
+      "location": {
+        "name": "The Mill",
+        "address": "414 N Dorman St, Indianapolis, IN 46202",
+        "lat": 39.7732,
+        "lng": -86.1566
+      },
+      "url": "https://www.startupgrind.com/indianapolis",
+      "organizer": "Startup Grind Indianapolis",
+      "features": {
+        "free": true,
+        "food": true,
+        "appetizers": false,
+        "nonAlcoholDrinks": true,
+        "alcoholDrinks": true
+      }
+    },
+    {
+      "id": "2",
+      "title": "Fort Wayne Tech Summit",
+      "description": "Annual technology and entrepreneurship conference featuring workshops, panels, and networking opportunities for Northeast Indiana's tech community.",
+      "date": "2025-12-05T09:00:00",
+      "endDate": "2025-12-05T17:00:00",
+      "location": {
+        "name": "Grand Wayne Convention Center",
+        "address": "120 W Jefferson Blvd, Fort Wayne, IN 46802",
+        "lat": 41.0793,
+        "lng": -85.1394
+      },
+      "url": "https://example.com/fwtech",
+      "organizer": "Fort Wayne Tech Alliance",
+      "features": {
+        "free": false,
+        "food": true,
+        "appetizers": true,
+        "nonAlcoholDrinks": true,
+        "alcoholDrinks": false
+      }
+    },
+    {
+      "id": "3",
+      "title": "Women in Business Networking Breakfast",
+      "description": "Monthly breakfast networking event for women entrepreneurs and business leaders across Central Indiana. Share experiences and build connections.",
+      "date": "2025-11-28T08:00:00",
+      "endDate": "2025-11-28T10:00:00",
+      "location": {
+        "name": "Scholars Inn Bakehouse",
+        "address": "157 E Kirkwood Ave, Bloomington, IN 47408",
+        "lat": 39.1653,
+        "lng": -86.5264
+      },
+      "url": "https://example.com/wib",
+      "organizer": "Indiana Women's Business Network",
+      "features": {
+        "free": true,
+        "food": true,
+        "appetizers": true,
+        "nonAlcoholDrinks": true,
+        "alcoholDrinks": false
+      }
+    },
+    {
+      "id": "4",
+      "title": "South Bend Entrepreneur Happy Hour",
+      "description": "Casual networking event for entrepreneurs, freelancers, and small business owners in the South Bend area. Drink specials and appetizers provided.",
+      "date": "2025-11-22T17:30:00",
+      "endDate": "2025-11-22T19:30:00",
+      "location": {
+        "name": "Evil Czech Brewery",
+        "address": "3703 N Main St, Mishawaka, IN 46545",
+        "lat": 41.7025,
+        "lng": -86.1586
+      },
+      "url": "https://example.com/sbhappy",
+      "organizer": "South Bend Entrepreneurs",
+      "features": {
+        "free": true,
+        "food": false,
+        "appetizers": true,
+        "nonAlcoholDrinks": true,
+        "alcoholDrinks": true
+      }
+    },
+    {
+      "id": "5",
+      "title": "Evansville Innovation Workshop Series",
+      "description": "Free workshop covering lean startup methodology, customer discovery, and product-market fit. Open to all entrepreneurs in the tri-state area.",
+      "date": "2025-12-10T18:00:00",
+      "endDate": "2025-12-10T20:30:00",
+      "location": {
+        "name": "Southwest Indiana Small Business Development Center",
+        "address": "318 Main St, Evansville, IN 47708",
+        "lat": 37.9747,
+        "lng": -87.5558
+      },
+      "url": "https://example.com/evansville",
+      "organizer": "ISBDC",
+      "features": {
+        "free": true,
+        "food": false,
+        "appetizers": false,
+        "nonAlcoholDrinks": true,
+        "alcoholDrinks": false
+      }
+    },
+    {
+      "id": "6",
+      "title": "Carmel Tech & Tacos",
+      "description": "Monthly gathering of tech entrepreneurs and developers. Learn about the latest trends while enjoying tacos and margaritas.",
+      "date": "2025-12-01T12:00:00",
+      "endDate": "2025-12-01T14:00:00",
+      "location": {
+        "name": "Bakersfield Mass Ave",
+        "address": "334 Massachusetts Ave, Indianapolis, IN 46204",
+        "lat": 39.7719,
+        "lng": -86.1539
+      },
+      "url": "https://example.com/techntacos",
+      "organizer": "Carmel Tech Community",
+      "features": {
+        "free": false,
+        "food": true,
+        "appetizers": false,
+        "nonAlcoholDrinks": true,
+        "alcoholDrinks": true
+      }
+    }
+  ]
 }
