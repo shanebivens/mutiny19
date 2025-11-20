@@ -42,3 +42,17 @@ htmlcov/
 # Environment
 .env
 .env.local
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+*.backup
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Scraper output logs
+scraper/*.log
+/tmp/scraper_output.log
