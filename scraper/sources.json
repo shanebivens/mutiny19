@@ -93,10 +93,31 @@
     },
     {
       "name": "Launch Fishers",
-      "type": "custom",
-      "url": "https://www.launchfishers.com/events-calendar/",
+      "type": "ical",
+      "url": "https://launchfishers.com/?post_type=tribe_events&ical=1&eventDisplay=list",
       "enabled": true,
-      "description": "Fishers coworking, IoT Lab, and entrepreneur events"
+      "description": "Fishers coworking, IoT Lab, and entrepreneur events (iCal feed)"
+    },
+    {
+      "name": "Smartups Indy Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/smartups-indy-startups-marketing/events/ical/",
+      "enabled": true,
+      "description": "Indianapolis startup marketing meetup group"
+    },
+    {
+      "name": "H7 Network Indianapolis Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/h7-network-indianapolis/events/ical/",
+      "enabled": true,
+      "description": "Business networking meetup group in Indianapolis area"
+    },
+    {
+      "name": "ConnectIND Events",
+      "type": "custom",
+      "url": "https://connectind.com/events",
+      "enabled": false,
+      "description": "Indiana entrepreneur community events (needs custom scraper - JavaScript heavy)"
     },
     {
       "name": "Venture Club of Indiana",
