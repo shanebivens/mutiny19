@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUTINY19 | Indiana's Founder Rebellion</title>
     <meta name="description" content="The 19th state leads the rebellion. AI-powered founders. Cyber pirates. Join 100+ Indiana entrepreneurs building the future.">
-    <meta name="keywords" content="Indiana startups, entrepreneur community, founder network, tech rebellion, startup events">
+    <meta name="keywords" content="Indiana startups, entrepreneur community, founder network, tech rebellion, startup events, eventos Indiana, emprendedores Indiana">
+
+    <!-- Language alternates for SEO -->
+    <link rel="alternate" hreflang="en" href="https://mutiny19.github.io/mutiny19/">
+    <link rel="alternate" hreflang="es" href="https://mutiny19.github.io/mutiny19/?lang=es">
+    <link rel="alternate" hreflang="x-default" href="https://mutiny19.github.io/mutiny19/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="MUTINY19 | Indiana's Founder Rebellion">
@@ -57,10 +62,11 @@
             <span class="brand-tag">// THE 19TH STATE</span>
         </a>
         <div class="nav-links">
-            <a href="#events" class="nav-link">EVENTS</a>
-            <a href="#manifesto" class="nav-link">MANIFESTO</a>
-            <a href="#intel" class="nav-link">INTEL</a>
-            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="nav-cta">JOIN_CREW</a>
+            <a href="#events" class="nav-link" data-i18n="nav.events">EVENTS</a>
+            <a href="#manifesto" class="nav-link" data-i18n="nav.manifesto">MANIFESTO</a>
+            <a href="#intel" class="nav-link" data-i18n="nav.intel">INTEL</a>
+            <button class="lang-toggle" id="langToggle" aria-label="Toggle language">EN</button>
+            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="nav-cta" data-i18n="nav.join">JOIN_CREW</a>
         </div>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
             <span></span>
@@ -75,44 +81,44 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="badge-pulse"></span>
-                    <span>ACTIVE REBELLION</span>
+                    <span data-i18n="hero.badge">ACTIVE REBELLION</span>
                 </div>
 
                 <h1 class="hero-title">
                     <span class="glitch-text" data-text="INDIANA">INDIANA</span>
-                    <span class="title-sub">FOUNDERS</span>
-                    <span class="glitch-text accent" data-text="REVOLT">REVOLT</span>
+                    <span class="title-sub" data-i18n="hero.founders">FOUNDERS</span>
+                    <span class="glitch-text accent" data-text="REVOLT" data-i18n="hero.revolt">REVOLT</span>
                 </h1>
 
                 <p class="hero-desc">
-                    <span class="typed-text">100+ founders. Zero gatekeepers. One mission:</span>
+                    <span class="typed-text" data-i18n="hero.tagline">100+ founders. Zero gatekeepers. One mission:</span>
                     <br>
-                    <strong class="highlight">Build companies that matter.</strong>
+                    <strong class="highlight" data-i18n="hero.mission">Build companies that matter.</strong>
                 </p>
 
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number" data-count="105">0</span>
-                        <span class="stat-label">EVENTS MAPPED</span>
+                        <span class="stat-label" data-i18n="hero.eventsMapped">EVENTS MAPPED</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number" data-count="19">0</span>
-                        <span class="stat-label">CITIES COVERED</span>
+                        <span class="stat-label" data-i18n="hero.citiesCovered">CITIES COVERED</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">∞</span>
-                        <span class="stat-label">FOUNDER SUPPORT</span>
+                        <span class="stat-label" data-i18n="hero.founderSupport">FOUNDER SUPPORT</span>
                     </div>
                 </div>
 
                 <div class="hero-cta">
                     <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="btn-primary">
                         <span class="btn-icon">⚡</span>
-                        <span>JOIN THE REBELLION</span>
+                        <span data-i18n="hero.joinRebellion">JOIN THE REBELLION</span>
                         <span class="btn-arrow">→</span>
                     </a>
                     <a href="#events" class="btn-secondary">
-                        <span>EXPLORE EVENTS</span>
+                        <span data-i18n="hero.exploreEvents">EXPLORE EVENTS</span>
                     </a>
                 </div>
             </div>
@@ -173,9 +179,9 @@
     <!-- Events Section -->
     <section id="events" class="events-section">
         <div class="section-header">
-            <span class="section-tag">// NAVIGATION</span>
-            <h2 class="section-title">PLOT YOUR COURSE</h2>
-            <p class="section-desc">Every founder event in Indiana. Auto-scraped. No curation. You choose.</p>
+            <span class="section-tag" data-i18n="events.tag">// NAVIGATION</span>
+            <h2 class="section-title" data-i18n="events.title">PLOT YOUR COURSE</h2>
+            <p class="section-desc" data-i18n="events.desc">Every founder event in Indiana. Auto-scraped. No curation. You choose.</p>
         </div>
 
         <div class="events-container">
@@ -259,8 +265,8 @@
     <!-- Manifesto Section -->
     <section id="manifesto" class="manifesto-section">
         <div class="manifesto-header">
-            <span class="section-tag">// PRINCIPLES</span>
-            <h2 class="section-title">THE MUTINY19 CODE</h2>
+            <span class="section-tag" data-i18n="manifesto.tag">// PRINCIPLES</span>
+            <h2 class="section-title" data-i18n="manifesto.title">THE MUTINY19 CODE</h2>
         </div>
 
         <div class="manifesto-grid">
@@ -363,9 +369,9 @@
     <!-- Intel Section (Community Reporting) -->
     <section id="intel" class="intel-section">
         <div class="section-header">
-            <span class="section-tag">// INTELLIGENCE</span>
-            <h2 class="section-title">ANONYMOUS COMMUNITY INTEL</h2>
-            <p class="section-desc">Celebrate champions. Warn about bad actors. Anonymous. Protected.</p>
+            <span class="section-tag" data-i18n="intel.tag">// INTELLIGENCE</span>
+            <h2 class="section-title" data-i18n="intel.title">ANONYMOUS COMMUNITY INTEL</h2>
+            <p class="section-desc" data-i18n="intel.desc">Celebrate champions. Warn about bad actors. Anonymous. Protected.</p>
         </div>
 
         <div class="intel-grid">
@@ -483,15 +489,15 @@
         <div class="discord-content">
             <div class="discord-badge">
                 <span class="badge-pulse"></span>
-                <span>100+ FOUNDERS ONLINE</span>
+                <span data-i18n="discord.badge">100+ FOUNDERS ONLINE</span>
             </div>
 
             <h2 class="discord-title">
-                <span>JOIN THE</span>
-                <span class="glitch-text" data-text="REBELLION">REBELLION</span>
+                <span data-i18n="discord.joinThe">JOIN THE</span>
+                <span class="glitch-text" data-text="REBELLION" data-i18n="discord.rebellion">REBELLION</span>
             </h2>
 
-            <p class="discord-desc">
+            <p class="discord-desc" data-i18n="discord.desc">
                 Real conversations. Real founders. Real support.<br>
                 No pitching. No performing. Just builders helping builders.
             </p>
@@ -593,10 +599,11 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
-            <a href="#events" class="mobile-link">EVENTS</a>
-            <a href="#manifesto" class="mobile-link">MANIFESTO</a>
-            <a href="#intel" class="mobile-link">INTEL</a>
-            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="mobile-cta">JOIN THE CREW</a>
+            <a href="#events" class="mobile-link" data-i18n="nav.events">EVENTS</a>
+            <a href="#manifesto" class="mobile-link" data-i18n="nav.manifesto">MANIFESTO</a>
+            <a href="#intel" class="mobile-link" data-i18n="nav.intel">INTEL</a>
+            <button class="lang-toggle mobile-lang" id="mobileLangToggle" aria-label="Toggle language">EN</button>
+            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="mobile-cta" data-i18n="nav.joinCrew">JOIN THE CREW</a>
         </div>
     </div>
 

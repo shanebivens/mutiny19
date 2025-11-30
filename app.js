@@ -3,13 +3,141 @@ let map;
 let eventsData = [];
 let markers = [];
 let currentView = 'list'; // 'map', 'list', or 'both'
+// Check URL param first, then localStorage, then default to 'en'
+const urlParams = new URLSearchParams(window.location.search);
+let currentLang = urlParams.get('lang') || localStorage.getItem('mutiny19_lang') || 'en';
+if (currentLang !== 'en' && currentLang !== 'es') currentLang = 'en';
+
+// Translations
+const translations = {
+    en: {
+        // Navigation
+        'nav.events': 'EVENTS',
+        'nav.manifesto': 'MANIFESTO',
+        'nav.intel': 'INTEL',
+        'nav.join': 'JOIN_CREW',
+        'nav.joinCrew': 'JOIN THE CREW',
+
+        // Hero
+        'hero.badge': 'ACTIVE REBELLION',
+        'hero.founders': 'FOUNDERS',
+        'hero.revolt': 'REVOLT',
+        'hero.tagline': '100+ founders. Zero gatekeepers. One mission:',
+        'hero.mission': 'Build companies that matter.',
+        'hero.eventsMapped': 'EVENTS MAPPED',
+        'hero.citiesCovered': 'CITIES COVERED',
+        'hero.founderSupport': 'FOUNDER SUPPORT',
+        'hero.joinRebellion': 'JOIN THE REBELLION',
+        'hero.exploreEvents': 'EXPLORE EVENTS',
+
+        // Events
+        'events.tag': '// NAVIGATION',
+        'events.title': 'PLOT YOUR COURSE',
+        'events.desc': 'Every founder event in Indiana. Auto-scraped. No curation. You choose.',
+
+        // Manifesto
+        'manifesto.tag': '// PRINCIPLES',
+        'manifesto.title': 'THE MUTINY19 CODE',
+
+        // Intel
+        'intel.tag': '// INTELLIGENCE',
+        'intel.title': 'ANONYMOUS COMMUNITY INTEL',
+        'intel.desc': 'Celebrate champions. Warn about bad actors. Anonymous. Protected.',
+
+        // Discord
+        'discord.badge': '100+ FOUNDERS ONLINE',
+        'discord.joinThe': 'JOIN THE',
+        'discord.rebellion': 'REBELLION',
+        'discord.desc': 'Real conversations. Real founders. Real support.<br>No pitching. No performing. Just builders helping builders.'
+    },
+    es: {
+        // Navigation
+        'nav.events': 'EVENTOS',
+        'nav.manifesto': 'MANIFIESTO',
+        'nav.intel': 'INTEL',
+        'nav.join': 'ÚNETE',
+        'nav.joinCrew': 'ÚNETE A LA TRIPULACIÓN',
+
+        // Hero
+        'hero.badge': 'REBELIÓN ACTIVA',
+        'hero.founders': 'FUNDADORES',
+        'hero.revolt': 'REBELIÓN',
+        'hero.tagline': '100+ fundadores. Cero guardianes. Una misión:',
+        'hero.mission': 'Construir empresas que importan.',
+        'hero.eventsMapped': 'EVENTOS MAPEADOS',
+        'hero.citiesCovered': 'CIUDADES CUBIERTAS',
+        'hero.founderSupport': 'APOYO FUNDADOR',
+        'hero.joinRebellion': 'ÚNETE A LA REBELIÓN',
+        'hero.exploreEvents': 'EXPLORAR EVENTOS',
+
+        // Events
+        'events.tag': '// NAVEGACIÓN',
+        'events.title': 'TRAZA TU RUMBO',
+        'events.desc': 'Cada evento para fundadores en Indiana. Auto-recopilado. Sin curación. Tú eliges.',
+
+        // Manifesto
+        'manifesto.tag': '// PRINCIPIOS',
+        'manifesto.title': 'EL CÓDIGO MUTINY19',
+
+        // Intel
+        'intel.tag': '// INTELIGENCIA',
+        'intel.title': 'INTEL COMUNITARIO ANÓNIMO',
+        'intel.desc': 'Celebra campeones. Advierte sobre malos actores. Anónimo. Protegido.',
+
+        // Discord
+        'discord.badge': '100+ FUNDADORES EN LÍNEA',
+        'discord.joinThe': 'ÚNETE A LA',
+        'discord.rebellion': 'REBELIÓN',
+        'discord.desc': 'Conversaciones reales. Fundadores reales. Apoyo real.<br>Sin pitch. Sin actuar. Solo constructores ayudando constructores.'
+    }
+};
+
+// Apply translations to the page
+function applyTranslations(lang) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+
+    // Update lang toggles
+    const toggles = document.querySelectorAll('.lang-toggle');
+    toggles.forEach(toggle => {
+        toggle.textContent = lang.toUpperCase();
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+
+    // Store preference
+    localStorage.setItem('mutiny19_lang', lang);
+    currentLang = lang;
+}
+
+// Toggle language
+function toggleLanguage() {
+    const newLang = currentLang === 'en' ? 'es' : 'en';
+    applyTranslations(newLang);
+}
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async () => {
+    // Apply saved language preference
+    applyTranslations(currentLang);
+
     await loadEvents();
     initializeMap();
     setupEventListeners();
     applyFilters();
+
+    // Setup language toggle listeners
+    const langToggle = document.getElementById('langToggle');
+    const mobileLangToggle = document.getElementById('mobileLangToggle');
+
+    if (langToggle) langToggle.addEventListener('click', toggleLanguage);
+    if (mobileLangToggle) mobileLangToggle.addEventListener('click', toggleLanguage);
 });
 
 // Load events from JSON file

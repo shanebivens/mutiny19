@@ -215,6 +215,32 @@ img {
     box-shadow: 0 4px 20px var(--cyan-glow);
 }
 
+/* Language Toggle */
+.lang-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--cyan);
+    background: transparent;
+    border: 1px solid var(--cyan);
+    border-radius: 4px;
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-width: 36px;
+}
+
+.lang-toggle:hover {
+    background: var(--cyan);
+    color: var(--black);
+}
+
+.lang-toggle.mobile-lang {
+    margin: var(--space-md) 0;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 1rem;
+}
+
 /* Mobile Menu Button */
 .mobile-menu-btn {
     display: flex;
