@@ -7,6 +7,7 @@ let currentView = 'list'; // 'map', 'list', or 'both'
 const urlParams = new URLSearchParams(window.location.search);
 let currentLang = urlParams.get('lang') || localStorage.getItem('mutiny19_lang') || 'en';
 if (currentLang !== 'en' && currentLang !== 'es') currentLang = 'en';
+console.log('Initial language:', currentLang, '| URL param:', urlParams.get('lang'), '| localStorage:', localStorage.getItem('mutiny19_lang'));
 
 // Translations
 const translations = {
@@ -369,11 +370,19 @@ function t(key) {
 
 // Apply translations to the page
 function applyTranslations(lang) {
+    console.log('Applying translations for:', lang);
+    console.log('Available languages:', Object.keys(translations));
+
     const elements = document.querySelectorAll('[data-i18n]');
+    console.log('Found', elements.length, 'elements with data-i18n');
+
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key];
+        const translation = translations[lang]?.[key];
+        if (translation) {
+            el.innerHTML = translation;
+        } else {
+            console.warn('Missing translation for:', key, 'in', lang);
         }
     });
 
