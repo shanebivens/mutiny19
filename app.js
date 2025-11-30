@@ -78,7 +78,112 @@ const translations = {
         'event.date': 'Date',
         'event.location': 'Location',
         'event.organizer': 'Organizer',
-        'event.description': 'Description'
+        'event.description': 'Description',
+
+        // Hero extras
+        'hero.caption': "Indiana's state bird. Upgraded.",
+        'hero.scroll': 'SCROLL',
+
+        // Ticker
+        'ticker.autoPillaged': '⚡ AUTO-PILLAGED DAILY',
+        'ticker.lastRaid': 'LAST RAID:',
+        'ticker.noGatekeepers': 'NO GATEKEEPERS',
+        'ticker.founderLed': 'FOUNDER-LED',
+        'ticker.19thState': 'THE 19TH STATE LEADS',
+        'ticker.secret': '09.19.26 // SOMETHING\'S COMING',
+
+        // Signup
+        'signup.tag': '// STAY INFORMED',
+        'signup.title': 'GET UPDATES',
+        'signup.desc': 'Be the first to know about new founder events, community news, and what\'s brewing for September 19, 2026.',
+        'signup.cta': 'SIGN UP FOR UPDATES',
+
+        // Manifesto cards
+        'manifesto.card1.title': 'CAPTAINS LEAD',
+        'manifesto.card1.desc': 'Founders steer. Supporters provide wind. Both essential—but the builder holds the wheel. Always.',
+        'manifesto.card2.title': 'TRANSPARENT MAPS',
+        'manifesto.card2.desc': 'Every event. Every opportunity. No curation, no gatekeeping. You see everything. You choose your path.',
+        'manifesto.card3.title': 'LONG VOYAGES',
+        'manifesto.card3.desc': 'We celebrate founders building for decades, not quarters. Patient capital. Patient builders. Real companies.',
+        'manifesto.card4.title': 'FAIR EXCHANGE',
+        'manifesto.card4.desc': 'Your wisdom has value. No free extraction. If everyone at the table is compensated except you—walk away.',
+        'manifesto.card5.title': 'THE 19TH STATE LEADS',
+        'manifesto.card5.desc': 'Indiana became the 19th state in 1816. Our ancestors didn\'t settle—they pioneered. We honor them by building, not following.',
+        'manifesto.card5.date': 'December 11, 1816 → Forever',
+        'manifesto.card6.title': 'BUILDERS ONLY',
+        'manifesto.card6.desc': 'Not a networking group. Not a pitch competition. A crew of people actually building things. That\'s it.',
+
+        // Docs
+        'docs.title': 'FOUNDER-FRIENDLY DOCS',
+        'docs.desc': 'Industry-standard agreements that protect builders:',
+        'docs.safe.pirate': 'Your treasure map for fair funding. No predatory terms, no hidden reefs.',
+        'docs.fast.pirate': 'Keep your advisors honest. Fair shares for those who actually help sail the ship.',
+
+        // Story
+        'story.title': 'THE TALE OF CAPTAIN CARDINAL',
+        'story.hint': '// Origin Story',
+
+        // Intel
+        'intel.champions': 'CHAMPIONS',
+        'intel.warnings': 'WARNINGS',
+        'intel.celebrateTitle': 'CELEBRATE CHAMPIONS',
+        'intel.champ1': 'Investors who provided real value beyond money',
+        'intel.champ2': 'Mentors who gave honest, helpful guidance',
+        'intel.champ3': 'Partners who delivered above and beyond',
+        'intel.champ4': 'Vendors who truly understood founder needs',
+        'intel.champNote': 'Share specific examples of how they helped you succeed.',
+        'intel.warningTitle': 'WARNING REPORTS',
+        'intel.warn1': 'Unethical investors or predatory terms',
+        'intel.warn2': 'Vendors who didn\'t deliver promises',
+        'intel.warn3': 'Advisors who extracted without adding value',
+        'intel.warn4': 'Partners who acted in bad faith',
+        'intel.warnNote': 'Stick to facts. "They did X" not "They\'re a scammer."',
+
+        // Form
+        'form.champion': 'Champion',
+        'form.warning': 'Warning',
+        'form.type': 'TYPE',
+        'form.select': 'Select...',
+        'form.investor': 'Investor',
+        'form.vendor': 'Vendor',
+        'form.advisor': 'Advisor',
+        'form.mentor': 'Mentor',
+        'form.partner': 'Partner',
+        'form.other': 'Other',
+        'form.nameCompany': 'NAME / COMPANY',
+        'form.namePlaceholder': 'Company or individual',
+        'form.whyChampion': 'WHY THEY\'RE A CHAMPION',
+        'form.descPlaceholder': 'Describe how they went above and beyond...',
+        'form.timeline': 'TIMELINE',
+        'form.evidence': 'EVIDENCE (OPTIONAL)',
+        'form.evidencePlaceholder': 'Links to docs, etc.',
+        'form.note': '🔒 Anonymous • No personal data stored • Rate limited',
+        'form.submitChampion': '⭐ SUBMIT CHAMPION',
+        'form.success': '✓ Report submitted. Thank you for protecting the crew.',
+        'form.error': '✗ Error submitting. Please try again.',
+
+        // Discord
+        'discord.feat1': 'Honest Navigation',
+        'discord.feat2': 'Founder-Only Channels',
+        'discord.feat3': 'Deal Wisdom',
+        'discord.feat4': 'IRL Meetups',
+        'discord.cta': 'JOIN MUTINY19 ON DISCORD',
+        'discord.loading': 'Loading Discord widget...',
+
+        // Teaser
+        'teaser.month': 'SEPT',
+        'teaser.tag': '// INTERNATIONAL TALK LIKE A PIRATE DAY',
+        'teaser.title': 'SOMETHING\'S COMING',
+        'teaser.desc': 'The 19th state. The 19th day. The 9th month.<br>Some numbers just align.',
+        'teaser.cta': 'Be there when it happens →',
+
+        // Footer
+        'footer.tagline': 'Digital Pirates of the 19th State',
+        'footer.reportIntel': 'Report Intel',
+        'footer.builtBy': 'Built by founders, for founders.',
+        'footer.aiPowered': '⚡ AI-powered by <a href="https://claude.ai" target="_blank">Claude</a> • Content synthesized from 100+ Indiana entrepreneurs',
+        'footer.noSponsors': 'No corporate sponsors',
+        'footer.noGatekeepers': 'No gatekeepers'
     },
     es: {
         // Navigation
@@ -148,7 +253,112 @@ const translations = {
         'event.date': 'Fecha',
         'event.location': 'Ubicación',
         'event.organizer': 'Organizador',
-        'event.description': 'Descripción'
+        'event.description': 'Descripción',
+
+        // Hero extras
+        'hero.caption': 'El ave estatal de Indiana. Mejorada.',
+        'hero.scroll': 'DESPLAZA',
+
+        // Ticker
+        'ticker.autoPillaged': '⚡ AUTO-SAQUEADO DIARIO',
+        'ticker.lastRaid': 'ÚLTIMO SAQUEO:',
+        'ticker.noGatekeepers': 'SIN GUARDIANES',
+        'ticker.founderLed': 'LIDERADO POR FUNDADORES',
+        'ticker.19thState': 'EL ESTADO 19 LIDERA',
+        'ticker.secret': '19.09.26 // ALGO VIENE',
+
+        // Signup
+        'signup.tag': '// MANTENTE INFORMADO',
+        'signup.title': 'RECIBE ACTUALIZACIONES',
+        'signup.desc': 'Sé el primero en conocer nuevos eventos, noticias de la comunidad y lo que se prepara para el 19 de septiembre de 2026.',
+        'signup.cta': 'SUSCRÍBETE A ACTUALIZACIONES',
+
+        // Manifesto cards
+        'manifesto.card1.title': 'LOS CAPITANES LIDERAN',
+        'manifesto.card1.desc': 'Los fundadores dirigen. Los apoyos dan viento. Ambos esenciales—pero el constructor sostiene el timón. Siempre.',
+        'manifesto.card2.title': 'MAPAS TRANSPARENTES',
+        'manifesto.card2.desc': 'Cada evento. Cada oportunidad. Sin curación, sin guardianes. Ves todo. Eliges tu camino.',
+        'manifesto.card3.title': 'VIAJES LARGOS',
+        'manifesto.card3.desc': 'Celebramos fundadores construyendo por décadas, no trimestres. Capital paciente. Constructores pacientes. Empresas reales.',
+        'manifesto.card4.title': 'INTERCAMBIO JUSTO',
+        'manifesto.card4.desc': 'Tu sabiduría tiene valor. Sin extracción gratuita. Si todos en la mesa son compensados excepto tú—retírate.',
+        'manifesto.card5.title': 'EL ESTADO 19 LIDERA',
+        'manifesto.card5.desc': 'Indiana se convirtió en el estado 19 en 1816. Nuestros ancestros no se asentaron—fueron pioneros. Los honramos construyendo, no siguiendo.',
+        'manifesto.card5.date': '11 de Diciembre, 1816 → Siempre',
+        'manifesto.card6.title': 'SOLO CONSTRUCTORES',
+        'manifesto.card6.desc': 'No es un grupo de networking. No es una competencia de pitch. Una tripulación de gente realmente construyendo cosas. Eso es todo.',
+
+        // Docs
+        'docs.title': 'DOCUMENTOS AMIGABLES',
+        'docs.desc': 'Acuerdos estándar que protegen a los constructores:',
+        'docs.safe.pirate': 'Tu mapa del tesoro para financiación justa. Sin términos predatorios, sin arrecifes ocultos.',
+        'docs.fast.pirate': 'Mantén honestos a tus asesores. Partes justas para quienes realmente ayudan a navegar.',
+
+        // Story
+        'story.title': 'EL CUENTO DEL CAPITÁN CARDENAL',
+        'story.hint': '// Historia de Origen',
+
+        // Intel
+        'intel.champions': 'CAMPEONES',
+        'intel.warnings': 'ADVERTENCIAS',
+        'intel.celebrateTitle': 'CELEBRA CAMPEONES',
+        'intel.champ1': 'Inversores que aportaron valor real más allá del dinero',
+        'intel.champ2': 'Mentores que dieron guía honesta y útil',
+        'intel.champ3': 'Socios que entregaron más de lo esperado',
+        'intel.champ4': 'Proveedores que realmente entendieron las necesidades del fundador',
+        'intel.champNote': 'Comparte ejemplos específicos de cómo te ayudaron a tener éxito.',
+        'intel.warningTitle': 'REPORTES DE ADVERTENCIA',
+        'intel.warn1': 'Inversores poco éticos o términos predatorios',
+        'intel.warn2': 'Proveedores que no cumplieron promesas',
+        'intel.warn3': 'Asesores que extrajeron sin agregar valor',
+        'intel.warn4': 'Socios que actuaron de mala fe',
+        'intel.warnNote': 'Apégate a los hechos. "Hicieron X" no "Son estafadores."',
+
+        // Form
+        'form.champion': 'Campeón',
+        'form.warning': 'Advertencia',
+        'form.type': 'TIPO',
+        'form.select': 'Seleccionar...',
+        'form.investor': 'Inversor',
+        'form.vendor': 'Proveedor',
+        'form.advisor': 'Asesor',
+        'form.mentor': 'Mentor',
+        'form.partner': 'Socio',
+        'form.other': 'Otro',
+        'form.nameCompany': 'NOMBRE / EMPRESA',
+        'form.namePlaceholder': 'Empresa o individuo',
+        'form.whyChampion': 'POR QUÉ SON CAMPEONES',
+        'form.descPlaceholder': 'Describe cómo fueron más allá...',
+        'form.timeline': 'PERÍODO',
+        'form.evidence': 'EVIDENCIA (OPCIONAL)',
+        'form.evidencePlaceholder': 'Enlaces a documentos, etc.',
+        'form.note': '🔒 Anónimo • Sin datos personales • Limitado',
+        'form.submitChampion': '⭐ ENVIAR CAMPEÓN',
+        'form.success': '✓ Reporte enviado. Gracias por proteger a la tripulación.',
+        'form.error': '✗ Error al enviar. Por favor intenta de nuevo.',
+
+        // Discord
+        'discord.feat1': 'Navegación Honesta',
+        'discord.feat2': 'Canales Solo Fundadores',
+        'discord.feat3': 'Sabiduría de Negocios',
+        'discord.feat4': 'Encuentros Presenciales',
+        'discord.cta': 'ÚNETE A MUTINY19 EN DISCORD',
+        'discord.loading': 'Cargando widget de Discord...',
+
+        // Teaser
+        'teaser.month': 'SEPT',
+        'teaser.tag': '// DÍA INTERNACIONAL DE HABLAR COMO PIRATA',
+        'teaser.title': 'ALGO VIENE',
+        'teaser.desc': 'El estado 19. El día 19. El mes 9.<br>Algunos números simplemente alinean.',
+        'teaser.cta': 'Esté ahí cuando suceda →',
+
+        // Footer
+        'footer.tagline': 'Piratas Digitales del Estado 19',
+        'footer.reportIntel': 'Reportar Intel',
+        'footer.builtBy': 'Construido por fundadores, para fundadores.',
+        'footer.aiPowered': '⚡ Impulsado por IA con <a href="https://claude.ai" target="_blank">Claude</a> • Contenido sintetizado de 100+ emprendedores de Indiana',
+        'footer.noSponsors': 'Sin patrocinadores corporativos',
+        'footer.noGatekeepers': 'Sin guardianes'
     }
 };
 
@@ -164,6 +374,15 @@ function applyTranslations(lang) {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
             el.innerHTML = translations[lang][key];
+        }
+    });
+
+    // Handle placeholder translations
+    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+    placeholderElements.forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.placeholder = translations[lang][key];
         }
     });
 
