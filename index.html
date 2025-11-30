@@ -636,6 +636,10 @@
         storyToggle?.addEventListener('click', () => {
             storyToggle.classList.toggle('active');
             storyContent.classList.toggle('active');
+            // Re-apply translations when story is expanded
+            if (storyContent.classList.contains('active') && typeof applyTranslations === 'function') {
+                applyTranslations(currentLang);
+            }
         });
 
         // Guidelines toggle
