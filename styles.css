@@ -358,8 +358,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: var(--nav-height) var(--space-lg) var(--space-xl);
-    padding-bottom: 80px; /* Space for scroll indicator */
+    padding: calc(var(--nav-height) + var(--space-md)) var(--space-lg) 80px;
     position: relative;
     overflow: hidden;
 }
