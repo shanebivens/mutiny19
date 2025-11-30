@@ -1,0 +1,687 @@
+{
+  "sources": [
+    {
+      "name": "TechPoint Indiana Events",
+      "type": "custom",
+      "url": "https://techpoint.org/tech-events/",
+      "enabled": true,
+      "description": "Official Indiana tech and entrepreneur events hub"
+    },
+    {
+      "name": "1 Million Cups Indianapolis",
+      "type": "custom",
+      "url": "https://www.1millioncups.com/indy",
+      "enabled": true,
+      "description": "Weekly Wednesday entrepreneur meetups in Indianapolis"
+    },
+    {
+      "name": "1 Million Cups South Bend",
+      "type": "custom",
+      "url": "https://www.1millioncups.com/southbend",
+      "enabled": true,
+      "description": "2nd Wednesday monthly entrepreneur meetups in South Bend"
+    },
+    {
+      "name": "Eventbrite Indianapolis Entrepreneurs",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--indianapolis/entrepreneurs/",
+      "enabled": true,
+      "description": "Entrepreneur events on Eventbrite"
+    },
+    {
+      "name": "Eventbrite Indianapolis Startups",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--indianapolis/startup-events/",
+      "enabled": true,
+      "description": "Startup events on Eventbrite"
+    },
+    {
+      "name": "Eventbrite Indianapolis Business Networking",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--indianapolis/business-networking/",
+      "enabled": true,
+      "description": "Business networking events on Eventbrite"
+    },
+    {
+      "name": "Indiana SBDC Training & Education",
+      "type": "custom",
+      "url": "https://isbdc.org/training-education/",
+      "enabled": true,
+      "description": "Small business workshops and training"
+    },
+    {
+      "name": "Indy Chamber Events",
+      "type": "custom",
+      "url": "https://indychamber.com/attend-an-event/",
+      "enabled": true,
+      "description": "Greater Indianapolis Chamber of Commerce events"
+    },
+    {
+      "name": "Downtown Indy Events",
+      "type": "custom",
+      "url": "https://downtownindy.org/events/calendar",
+      "enabled": true,
+      "description": "Downtown Indianapolis food, art, and business events"
+    },
+    {
+      "name": "Visit Indy Food & Drink",
+      "type": "custom",
+      "url": "https://www.visitindy.com/events/food-drink/",
+      "enabled": true,
+      "description": "Culinary and drink events"
+    },
+    {
+      "name": "Eventbrite Indianapolis Food Festivals",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--indianapolis/food-festival/",
+      "enabled": true,
+      "description": "Food festivals and events"
+    },
+    {
+      "name": "16 Tech Innovation District",
+      "type": "ical",
+      "url": "https://16tech.com/?post_type=tribe_events&ical=1&eventDisplay=list",
+      "enabled": true,
+      "description": "Events at Indianapolis innovation district (using iCal feed for accurate dates)"
+    },
+    {
+      "name": "The Mill at Dimension Mill",
+      "type": "custom",
+      "url": "https://www.dimensionmill.org/",
+      "enabled": false,
+      "description": "Bloomington coworking and entrepreneur events (login may be required)"
+    },
+    {
+      "name": "Launch Fishers",
+      "type": "ical",
+      "url": "https://launchfishers.com/?post_type=tribe_events&ical=1&eventDisplay=list",
+      "enabled": true,
+      "description": "Fishers coworking, IoT Lab, and entrepreneur events (iCal feed)"
+    },
+    {
+      "name": "Smartups Indy Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/smartups-indy-startups-marketing/events/ical/",
+      "enabled": true,
+      "description": "Indianapolis startup marketing meetup group"
+    },
+    {
+      "name": "H7 Network Indianapolis Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/h7-network-indianapolis/events/ical/",
+      "enabled": true,
+      "description": "Business networking meetup group in Indianapolis area"
+    },
+    {
+      "name": "ConnectIND Events",
+      "type": "custom",
+      "url": "https://connectind.com/events",
+      "enabled": false,
+      "description": "Indiana entrepreneur community events (needs custom scraper - JavaScript heavy)"
+    },
+    {
+      "name": "Venture Club of Indiana",
+      "type": "custom",
+      "url": "https://www.ventureclub.org/events-2-1",
+      "enabled": true,
+      "description": "Venture capital and entrepreneur events (High Alpha, Elevate, etc.)"
+    },
+    {
+      "name": "IU Bloomington Innovation & Entrepreneurship",
+      "type": "custom",
+      "url": "https://business.indiana.edu/events/index.html",
+      "enabled": true,
+      "description": "Indiana University Kelley School entrepreneur events"
+    },
+    {
+      "name": "Purdue Foundry",
+      "type": "custom",
+      "url": "https://www.purduefoundry.com/events",
+      "enabled": true,
+      "description": "Purdue University startup accelerator events"
+    },
+    {
+      "name": "Notre Dame IDEA Center",
+      "type": "custom",
+      "url": "https://ideacenter.nd.edu/events/",
+      "enabled": true,
+      "description": "Notre Dame Innovation, Design, Entrepreneurship events"
+    },
+    {
+      "name": "Ball State Entrepreneurship",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/ball-state-university-31655145715",
+      "enabled": true,
+      "description": "Ball State University entrepreneur events"
+    },
+    {
+      "name": "IUPUI Innovation & Entrepreneurship",
+      "type": "custom",
+      "url": "https://www.iupui.edu/events",
+      "enabled": true,
+      "description": "IUPUI entrepreneur and innovation events"
+    },
+    {
+      "name": "Elevate Ventures Events",
+      "type": "custom",
+      "url": "https://elevateventures.com/events/",
+      "enabled": true,
+      "description": "Statewide VC events and pitch competitions"
+    },
+    {
+      "name": "High Alpha Innovation Events",
+      "type": "custom",
+      "url": "https://highalpha.com/events",
+      "enabled": true,
+      "description": "High Alpha venture studio events"
+    },
+    {
+      "name": "Fort Wayne 1 Million Cups",
+      "type": "custom",
+      "url": "https://www.1millioncups.com/fortwayne",
+      "enabled": true,
+      "description": "Fort Wayne weekly entrepreneur meetups"
+    },
+    {
+      "name": "Bloomington 1 Million Cups",
+      "type": "custom",
+      "url": "https://www.1millioncups.com/bloomington",
+      "enabled": true,
+      "description": "Bloomington weekly entrepreneur meetups"
+    },
+    {
+      "name": "Eventbrite Fort Wayne Entrepreneurs",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--fort-wayne/entrepreneurs/",
+      "enabled": true,
+      "description": "Fort Wayne entrepreneur events"
+    },
+    {
+      "name": "Eventbrite Bloomington Startups",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--bloomington/startup-events/",
+      "enabled": true,
+      "description": "Bloomington startup events"
+    },
+    {
+      "name": "Eventbrite Carmel Business Networking",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--carmel/business-networking/",
+      "enabled": true,
+      "description": "Carmel business networking events"
+    },
+    {
+      "name": "Eventbrite South Bend Entrepreneurs",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--south-bend/entrepreneurs/",
+      "enabled": true,
+      "description": "South Bend entrepreneur events"
+    },
+    {
+      "name": "Eventbrite Evansville Startups",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--evansville/startup-events/",
+      "enabled": true,
+      "description": "Evansville startup events"
+    },
+    {
+      "name": "Startup Grind Indianapolis",
+      "type": "custom",
+      "url": "https://www.startupgrind.com/indianapolis/",
+      "enabled": true,
+      "description": "Monthly founder meetups and speaker events"
+    },
+    {
+      "name": "Indie Hall Bloomington",
+      "type": "custom",
+      "url": "https://www.indiehall.org/events",
+      "enabled": false,
+      "description": "Bloomington coworking events (may require login)"
+    },
+    {
+      "name": "The Union 525 Events",
+      "type": "custom",
+      "url": "https://theunion525.com/events",
+      "enabled": true,
+      "description": "Indianapolis coworking and entrepreneur events"
+    },
+    {
+      "name": "Indiana SBDC Training Portal",
+      "type": "custom",
+      "url": "https://isbdc.ecenterdirect.com/events",
+      "enabled": true,
+      "description": "Indiana Small Business Development Center workshops and training (main portal)"
+    },
+    {
+      "name": "High Alpha Events",
+      "type": "custom",
+      "url": "https://highalpha.com/events/",
+      "enabled": true,
+      "description": "High Alpha venture studio webinars, speaker series, and founder events"
+    },
+    {
+      "name": "MatchBOX Coworking Studio",
+      "type": "custom",
+      "url": "https://mbx.studio/events",
+      "enabled": true,
+      "description": "Lafayette coworking events, pitch nights, Tech Tuesday, maker workshops"
+    },
+    {
+      "name": "Madjax Maker Force",
+      "type": "custom",
+      "url": "https://madjax.org/events",
+      "enabled": true,
+      "description": "Muncie maker space workshops, equipment training, and community events"
+    },
+    {
+      "name": "Dimension Mill Bloomington",
+      "type": "custom",
+      "url": "https://dimensionmill.org/events",
+      "enabled": true,
+      "description": "Bloomington coworking, Founders Friday, remote worker events"
+    },
+    {
+      "name": "IU Innovates",
+      "type": "custom",
+      "url": "https://innovates.iu.edu/events",
+      "enabled": true,
+      "description": "Indiana University innovation and entrepreneurship center events"
+    },
+    {
+      "name": "Indy Arts Council Events",
+      "type": "custom",
+      "url": "https://www.indyarts.org/events",
+      "enabled": true,
+      "description": "Indianapolis arts events, exhibitions, First Friday openings"
+    },
+    {
+      "name": "Fort Wayne Museum of Art",
+      "type": "custom",
+      "url": "https://www.fwmoa.org/exhibitions",
+      "enabled": true,
+      "description": "Fort Wayne art exhibitions and museum events"
+    },
+    {
+      "name": "Newfields Indianapolis",
+      "type": "custom",
+      "url": "https://discovernewfields.org/calendar",
+      "enabled": true,
+      "description": "Indianapolis Museum of Art exhibitions and cultural events"
+    },
+    {
+      "name": "Eventbrite Indiana Art Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--indiana/art-exhibitions/",
+      "enabled": true,
+      "description": "Art exhibitions and gallery events across Indiana"
+    },
+    {
+      "name": "Eventbrite Muncie Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--muncie/business/",
+      "enabled": true,
+      "description": "Muncie business and entrepreneur events"
+    },
+    {
+      "name": "Eventbrite Lafayette Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/in--lafayette/business-networking/",
+      "enabled": true,
+      "description": "Lafayette/West Lafayette business networking events"
+    },
+    {
+      "name": "Eventbrite Indiana Entrepreneurs Statewide",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/entrepreneur/",
+      "enabled": true,
+      "description": "Entrepreneur events across all of Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana Small Business Statewide",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/small-business/",
+      "enabled": true,
+      "description": "Small business events across all of Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana Pitch Competitions",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/pitch-competition/",
+      "enabled": true,
+      "description": "Pitch competitions and startup contests across Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana Innovation Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/innovation/",
+      "enabled": true,
+      "description": "Innovation and technology events across Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana Coworking Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/coworking/",
+      "enabled": true,
+      "description": "Coworking space events across Indiana"
+    },
+    {
+      "name": "Eventbrite Valparaiso Business",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--valparaiso/business/",
+      "enabled": true,
+      "description": "Business events in Northwest Indiana / Valparaiso area"
+    },
+    {
+      "name": "Eventbrite Elkhart Business",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--elkhart/business/",
+      "enabled": true,
+      "description": "Business events in Elkhart / Michiana area"
+    },
+    {
+      "name": "Eventbrite Terre Haute Business",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--terre-haute/business/",
+      "enabled": true,
+      "description": "Business events in Terre Haute / Wabash Valley"
+    },
+    {
+      "name": "Eventbrite Kokomo Business",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--kokomo/business/",
+      "enabled": true,
+      "description": "Business events in Kokomo area"
+    },
+    {
+      "name": "Eventbrite Hammond Business",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--hammond-indiana/business/",
+      "enabled": true,
+      "description": "Business events in Hammond / Northwest Indiana"
+    },
+    {
+      "name": "Eventbrite Anderson Business",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--anderson-indiana/business/",
+      "enabled": true,
+      "description": "Business events in Anderson / Madison County"
+    },
+    {
+      "name": "1 Million Cups Valparaiso",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/1-million-cups-northwest-indiana-56437763713",
+      "enabled": true,
+      "description": "1 Million Cups Northwest Indiana entrepreneur meetups"
+    },
+    {
+      "name": "Lower Lincoln Valparaiso",
+      "type": "custom",
+      "url": "https://lowerlincoln.com/events",
+      "enabled": true,
+      "description": "Valparaiso coworking space events and entrepreneur meetups"
+    },
+    {
+      "name": "Innovation Connector Muncie",
+      "type": "custom",
+      "url": "https://www.innovationconnector.com/events",
+      "enabled": true,
+      "description": "Muncie innovation hub events, coding clubs, and business programs"
+    },
+    {
+      "name": "Level Two Inc Plainfield",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/level-two-35174498563",
+      "enabled": true,
+      "description": "Plainfield coworking events, Small Business Roundtable, BNI meetings"
+    },
+    {
+      "name": "Northeast Indiana Innovation Center",
+      "type": "custom",
+      "url": "https://niic.net/events/",
+      "enabled": true,
+      "description": "Fort Wayne innovation center events and entrepreneur programs"
+    },
+    {
+      "name": "INSPIREsmall.biz Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/inspiresmallbiz-18aborti-30720346733",
+      "enabled": true,
+      "description": "Indianapolis small business networking and celebration events"
+    },
+    {
+      "name": "Innovation Park Notre Dame",
+      "type": "custom",
+      "url": "https://innovationparknd.com/events/",
+      "enabled": true,
+      "description": "South Bend innovation park defense and tech events"
+    },
+    {
+      "name": "Eventbrite Indiana Coding Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/coding/",
+      "enabled": true,
+      "description": "Coding, programming, and developer events across Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana AI Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/artificial-intelligence/",
+      "enabled": true,
+      "description": "Artificial intelligence and machine learning events in Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana Cybersecurity",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/cybersecurity/",
+      "enabled": true,
+      "description": "Cybersecurity, infosec, and hacking events (BSides, etc.)"
+    },
+    {
+      "name": "Eventbrite Indiana Tech Meetups",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/tech-meetup/",
+      "enabled": true,
+      "description": "Technology meetups and networking events"
+    },
+    {
+      "name": "Eventbrite Indiana Maker Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/maker/",
+      "enabled": true,
+      "description": "Maker, DIY, crafting, and makerspace events"
+    },
+    {
+      "name": "Eventbrite Indiana Robotics",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/robotics/",
+      "enabled": true,
+      "description": "Robotics, FIRST, and STEM education events"
+    },
+    {
+      "name": "Downtown Indy Code and Coffee Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/downtown-code-and-coffee/events/ical/",
+      "enabled": true,
+      "description": "Weekly developer meetup in downtown Indianapolis"
+    },
+    {
+      "name": "Carmel Code and Coffee Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/carmel-code-coffee/events/ical/",
+      "enabled": true,
+      "description": "Weekly coding meetup in Carmel"
+    },
+    {
+      "name": "Fishers Code and Coffee Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/fishers-code-coffee/events/ical/",
+      "enabled": true,
+      "description": "Weekly coding meetup in Fishers"
+    },
+    {
+      "name": "Indy.rb Ruby Brigade Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/indyrb/events/ical/",
+      "enabled": true,
+      "description": "Indianapolis Ruby developers monthly meetup"
+    },
+    {
+      "name": "CINLUG Linux Users Group",
+      "type": "ical",
+      "url": "https://www.meetup.com/cinlug/events/ical/",
+      "enabled": true,
+      "description": "Central Indiana Linux Users Group monthly meetings"
+    },
+    {
+      "name": "Indianapolis RHUG",
+      "type": "ical",
+      "url": "https://www.meetup.com/indianapolis-rhug/events/ical/",
+      "enabled": true,
+      "description": "Red Hat User Group - Infrastructure as Code, Ansible, OpenShift"
+    },
+    {
+      "name": "Indy BI User Group",
+      "type": "ical",
+      "url": "https://www.meetup.com/indy-bi-user-group/events/ical/",
+      "enabled": true,
+      "description": "Indianapolis Business Intelligence and Power BI user group"
+    },
+    {
+      "name": "IT Nerd Happy Hour Meetup",
+      "type": "ical",
+      "url": "https://www.meetup.com/it-nerd-happy-hour/events/ical/",
+      "enabled": true,
+      "description": "Casual IT and software developer networking happy hour"
+    },
+    {
+      "name": "Indy Hackers Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/indy-hackers-9curved-11270691893",
+      "enabled": true,
+      "description": "Indy Hackers tech community events and holiday socials"
+    },
+    {
+      "name": "Crane Regional Defense Group",
+      "type": "custom",
+      "url": "https://www.craneregionaldefensegroup.org/events",
+      "enabled": true,
+      "description": "NSWC Crane Connect to Mission events, Buy Indiana Expo, defense industry networking"
+    },
+    {
+      "name": "Battery Innovation Center",
+      "type": "custom",
+      "url": "https://bicindiana.com/events",
+      "enabled": true,
+      "description": "Energy storage workshops, luncheons, and networking in Southern Indiana"
+    },
+    {
+      "name": "The Heritage Group Accelerator",
+      "type": "custom",
+      "url": "https://www.hgaccelerator.com/",
+      "enabled": true,
+      "description": "HardTech accelerator demo days, cohort applications, innovation events"
+    },
+    {
+      "name": "NineTwelve Institute Events",
+      "type": "custom",
+      "url": "https://ninetwelve.us/events/",
+      "enabled": true,
+      "description": "EMC2 manufacturing events, cybersecurity training, advanced tech workshops"
+    },
+    {
+      "name": "Hardtech Innovators Network",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/o/conexus-indiana-8104714882",
+      "enabled": true,
+      "description": "Conexus Indiana Hardtech Innovators Network manufacturing and logistics events"
+    },
+    {
+      "name": "Eventbrite Indiana Defense Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/defense/",
+      "enabled": true,
+      "description": "Defense industry, aerospace, and military technology events in Indiana"
+    },
+    {
+      "name": "Eventbrite Indiana Manufacturing",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/manufacturing/",
+      "enabled": true,
+      "description": "Manufacturing, Industry 4.0, and advanced production events"
+    },
+    {
+      "name": "Eventbrite Indiana Energy Events",
+      "type": "eventbrite_search",
+      "url": "https://www.eventbrite.com/d/united-states--indiana/energy/",
+      "enabled": true,
+      "description": "Energy, battery, and cleantech events in Indiana"
+    }
+  ],
+  "keywords": [
+    "entrepreneur",
+    "startup",
+    "networking",
+    "business",
+    "founder",
+    "small business",
+    "innovation",
+    "tech",
+    "venture",
+    "investor",
+    "pitch",
+    "accelerator",
+    "incubator",
+    "food",
+    "festival",
+    "taste",
+    "culinary",
+    "chef",
+    "art",
+    "exhibit",
+    "gallery",
+    "trade show",
+    "expo",
+    "conference",
+    "workshop",
+    "summit",
+    "coding",
+    "programming",
+    "developer",
+    "software",
+    "hackathon",
+    "hacker",
+    "cybersecurity",
+    "infosec",
+    "AI",
+    "artificial intelligence",
+    "machine learning",
+    "data science",
+    "maker",
+    "makerspace",
+    "3D printing",
+    "robotics",
+    "STEM",
+    "arduino",
+    "raspberry pi",
+    "electronics",
+    "DIY",
+    "defense",
+    "aerospace",
+    "military",
+    "naval",
+    "battery",
+    "energy storage",
+    "cleantech",
+    "hardtech",
+    "manufacturing",
+    "industry 4.0",
+    "smart manufacturing"
+  ],
+  "excluded_keywords": [
+    "webinar only",
+    "online only",
+    "virtual only",
+    "cancelled",
+    "postponed"
+  ]
+}

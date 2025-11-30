@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUTINY19 | Indiana's Founder Rebellion</title>
+    <meta name="description" content="The 19th state leads the rebellion. AI-powered founders. Cyber pirates. Join 100+ Indiana entrepreneurs building the future.">
+    <meta name="keywords" content="Indiana startups, entrepreneur community, founder network, tech rebellion, startup events">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MUTINY19 | Indiana's Founder Rebellion">
+    <meta property="og:description" content="The 19th state leads the rebellion. Join 100+ Indiana founders building the future.">
+    <meta property="og:image" content="hero-cardinal-xix.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!--
+    ██╗  ██╗██╗██╗  ██╗
+    ╚██╗██╔╝██║╚██╗██╔╝
+     ╚███╔╝ ██║ ╚███╔╝
+     ██╔██╗ ██║ ██╔██╗
+    ██╔╝ ██╗██║██╔╝ ██╗
+    ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝
+
+    MUTINY19 - Indiana's Founder Rebellion
+
+    Built by founders. For founders.
+    No VCs were harmed in the making of this site.
+    (Their terms sheets, however...)
+
+    github.com/mutiny19/mutiny19
+-->
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#events" class="skip-link">Skip to content</a>
+
+    <!-- Glitch Overlay -->
+    <div class="glitch-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="#" class="nav-brand">
+            <span class="brand-text" data-text="MUTINY19">MUTINY19</span>
+            <span class="brand-tag">// THE 19TH STATE</span>
+        </a>
+        <div class="nav-links">
+            <a href="#events" class="nav-link">EVENTS</a>
+            <a href="#manifesto" class="nav-link">MANIFESTO</a>
+            <a href="#intel" class="nav-link">INTEL</a>
+            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="nav-cta">JOIN_CREW</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-pulse"></span>
+                    <span>ACTIVE REBELLION</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="glitch-text" data-text="INDIANA">INDIANA</span>
+                    <span class="title-sub">FOUNDERS</span>
+                    <span class="glitch-text accent" data-text="REVOLT">REVOLT</span>
+                </h1>
+
+                <p class="hero-desc">
+                    <span class="typed-text">100+ founders. Zero gatekeepers. One mission:</span>
+                    <br>
+                    <strong class="highlight">Build companies that matter.</strong>
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="105">0</span>
+                        <span class="stat-label">EVENTS MAPPED</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="19">0</span>
+                        <span class="stat-label">CITIES COVERED</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">FOUNDER SUPPORT</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="btn-primary">
+                        <span class="btn-icon">⚡</span>
+                        <span>JOIN THE REBELLION</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#events" class="btn-secondary">
+                        <span>EXPLORE EVENTS</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="cardinal-container">
+                    <div class="cardinal-glow"></div>
+                    <img src="hero-cardinal-xix.png" alt="XIX - The Cyber Cardinal" class="cardinal-image">
+                    <div class="cardinal-scanline"></div>
+                </div>
+                <div class="hero-caption">
+                    <span class="caption-tag">XIX</span>
+                    <span class="caption-text">Indiana's state bird. Upgraded.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Ticker Bar -->
+    <div class="ticker-bar">
+        <div class="ticker-content">
+            <span>⚡ AUTO-PILLAGED DAILY</span>
+            <span class="ticker-dot">●</span>
+            <span>LAST RAID: <span id="lastUpdate">LOADING...</span></span>
+            <span class="ticker-dot">●</span>
+            <span>NO GATEKEEPERS</span>
+            <span class="ticker-dot">●</span>
+            <span>FOUNDER-LED</span>
+            <span class="ticker-dot">●</span>
+            <span>THE 19TH STATE LEADS</span>
+            <span class="ticker-dot">●</span>
+            <span class="ticker-secret">09.19.26 // SOMETHING'S COMING</span>
+            <span class="ticker-dot">●</span>
+        </div>
+    </div>
+
+    <!-- Signup Section -->
+    <section class="signup-section">
+        <div class="signup-content">
+            <div class="signup-text">
+                <span class="section-tag">// STAY INFORMED</span>
+                <h2>GET UPDATES</h2>
+                <p>Be the first to know about new founder events, community news, and what's brewing for September 19, 2026.</p>
+            </div>
+            <a href="https://mutiny19.com" target="_blank" class="signup-cta">
+                <span>SIGN UP FOR UPDATES</span>
+                <span class="cta-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="section-header">
+            <span class="section-tag">// NAVIGATION</span>
+            <h2 class="section-title">PLOT YOUR COURSE</h2>
+            <p class="section-desc">Every founder event in Indiana. Auto-scraped. No curation. You choose.</p>
+        </div>
+
+        <div class="events-container">
+            <aside class="filters-panel">
+                <div class="filter-header">
+                    <span class="filter-icon">⚙</span>
+                    <span>FILTERS</span>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">TIMEFRAME</label>
+                    <div class="date-inputs">
+                        <input type="date" id="startDate" class="date-input">
+                        <span class="date-separator">→</span>
+                        <input type="date" id="endDate" class="date-input">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">WHAT'S INCLUDED</label>
+                    <div class="filter-checks">
+                        <label class="check-item">
+                            <input type="checkbox" id="filterFree" checked>
+                            <span class="check-box"></span>
+                            <span class="check-label">FREE</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="filterFood" checked>
+                            <span class="check-box"></span>
+                            <span class="check-label">FOOD</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="filterAppetizers" checked>
+                            <span class="check-box"></span>
+                            <span class="check-label">SNACKS</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="filterNonAlcohol" checked>
+                            <span class="check-box"></span>
+                            <span class="check-label">COFFEE</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="filterAlcohol" checked>
+                            <span class="check-box"></span>
+                            <span class="check-label">DRINKS</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">VIEW MODE</label>
+                    <div class="view-toggle">
+                        <button id="listViewBtn" class="view-btn active" data-view="list">
+                            <span>LIST</span>
+                        </button>
+                        <button id="mapViewBtn" class="view-btn" data-view="map">
+                            <span>MAP</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="clearFilters" class="btn-reset">
+                    <span>↻</span> RESET ALL
+                </button>
+            </aside>
+
+            <main class="events-main">
+                <div id="mapContainer" class="map-container" style="display: none;">
+                    <div id="map"></div>
+                </div>
+                <div id="listContainer" class="list-container">
+                    <div id="eventsLoading" class="loading">
+                        <span>Loading events...</span>
+                    </div>
+                    <div id="eventsList" class="events-list"></div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section id="manifesto" class="manifesto-section">
+        <div class="manifesto-header">
+            <span class="section-tag">// PRINCIPLES</span>
+            <h2 class="section-title">THE MUTINY19 CODE</h2>
+        </div>
+
+        <div class="manifesto-grid">
+            <div class="manifesto-card">
+                <div class="card-icon">01</div>
+                <h3>CAPTAINS LEAD</h3>
+                <p>Founders steer. Supporters provide wind. Both essential—but the builder holds the wheel. Always.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="card-icon">02</div>
+                <h3>TRANSPARENT MAPS</h3>
+                <p>Every event. Every opportunity. No curation, no gatekeeping. You see everything. You choose your path.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="card-icon">03</div>
+                <h3>LONG VOYAGES</h3>
+                <p>We celebrate founders building for decades, not quarters. Patient capital. Patient builders. Real companies.</p>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="card-icon">04</div>
+                <h3>FAIR EXCHANGE</h3>
+                <p>Your wisdom has value. No free extraction. If everyone at the table is compensated except you—walk away.</p>
+            </div>
+
+            <div class="manifesto-card featured">
+                <div class="card-icon">XIX</div>
+                <h3>THE 19TH STATE LEADS</h3>
+                <p>Indiana became the 19th state in 1816. Our ancestors didn't settle—they pioneered. We honor them by building, not following.</p>
+                <div class="card-date">December 11, 1816 → Forever</div>
+            </div>
+
+            <div class="manifesto-card">
+                <div class="card-icon">∞</div>
+                <h3>BUILDERS ONLY</h3>
+                <p>Not a networking group. Not a pitch competition. A crew of people actually building things. That's it.</p>
+            </div>
+        </div>
+
+        <div class="manifesto-docs">
+            <h3>FOUNDER-FRIENDLY DOCS</h3>
+            <p>Industry-standard agreements that protect builders:</p>
+            <div class="docs-grid">
+                <a href="https://www.ycombinator.com/documents" target="_blank" class="doc-card">
+                    <span class="doc-icon">📜</span>
+                    <span class="doc-title">Y Combinator SAFE</span>
+                    <span class="doc-desc">Simple Agreement for Future Equity</span>
+                    <span class="doc-pirate">Your treasure map for fair funding. No predatory terms, no hidden reefs.</span>
+                </a>
+                <a href="https://fi.co/fast" target="_blank" class="doc-card">
+                    <span class="doc-icon">⚡</span>
+                    <span class="doc-title">Founder Institute FAST</span>
+                    <span class="doc-desc">Founder/Advisor Standard Template</span>
+                    <span class="doc-pirate">Keep your advisors honest. Fair shares for those who actually help sail the ship.</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Origin Story (Collapsible) -->
+    <section class="story-section">
+        <button class="story-toggle" id="storyToggle">
+            <span class="toggle-icon">+</span>
+            <span>THE TALE OF CAPTAIN CARDINAL</span>
+            <span class="toggle-hint">// Origin Story</span>
+        </button>
+
+        <div class="story-content" id="storyContent">
+            <div class="story-inner">
+                <div class="story-chapter">
+                    <h4>CHAPTER I: THE GIFT OF THE PORTS</h4>
+                    <p>Captain Cardinal had sailed the startup seas for three glorious years, building a vessel of pure innovation—an AI-powered navigation system that could chart courses through uncharted waters. The journey began at ports built by pioneering navigators who'd first mapped Indiana's entrepreneurial waters decades before.</p>
+                    <p>Those early cartographers—bless their vision—built harbors where weary founders could dock, refuel, and learn the ropes. Without them, the seas would be empty.</p>
+                </div>
+
+                <div class="story-chapter">
+                    <h4>CHAPTER II: THE FESTIVAL OF CONNECTIONS</h4>
+                    <p>At the Great Networking Bay, Captain Cardinal found a bustling festival—hundreds of captains sharing tales and trading wisdom. Yet amid the revelry, a pattern emerged: some networkers collected introductions like seashells—beautiful to display, but offering no sustenance for the voyage ahead.</p>
+                    <p><em>What if we built gatherings where every introduction came with a map marking the reefs?</em></p>
+                </div>
+
+                <div class="story-chapter">
+                    <h4>CHAPTER III: THE GATHERING OF NINETEEN</h4>
+                    <p>In a tavern lit by laptop glow and neon cyan, Captain Cardinal met eighteen other founders. Each had received gifts from the ecosystem—mentorship, resources, community. Each felt genuine gratitude.</p>
+                    <p>Yet each also carried a quiet question: <em>"We love those who built the ports... but are we allowed to sail past them?"</em></p>
+                    <p>"We're the 19th state," one captain mused. "Indiana. Two centuries of pioneering spirit. Our predecessors didn't just maintain the settlements—they pushed west, they built new, they led."</p>
+                </div>
+
+                <div class="story-chapter">
+                    <h4>CHAPTER IV: THE EMERGENCE OF XIX</h4>
+                    <p>From the shadows emerged XIX—the Cyber Cardinal, upgraded with AI navigation, digital wings crackling with electric cyan. Not a weapon, but a beacon. A symbol that Indiana's state bird could evolve while staying true to its crimson heart.</p>
+                    <p class="story-footer">"The mutiny isn't against the ports—it's against the belief that we should only stay in them."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intel Section (Community Reporting) -->
+    <section id="intel" class="intel-section">
+        <div class="section-header">
+            <span class="section-tag">// INTELLIGENCE</span>
+            <h2 class="section-title">ANONYMOUS COMMUNITY INTEL</h2>
+            <p class="section-desc">Celebrate champions. Warn about bad actors. Anonymous. Protected.</p>
+        </div>
+
+        <div class="intel-grid">
+            <div class="intel-guidelines">
+                <div class="guidelines-toggle">
+                    <button class="guide-btn active" data-type="champion" id="guideChampion">
+                        <span>⭐</span> CHAMPIONS
+                    </button>
+                    <button class="guide-btn" data-type="warning" id="guideWarning">
+                        <span>⚠</span> WARNINGS
+                    </button>
+                </div>
+
+                <div class="guidelines-content" id="championGuide">
+                    <h4>CELEBRATE CHAMPIONS</h4>
+                    <ul>
+                        <li>Investors who provided real value beyond money</li>
+                        <li>Mentors who gave honest, helpful guidance</li>
+                        <li>Partners who delivered above and beyond</li>
+                        <li>Vendors who truly understood founder needs</li>
+                    </ul>
+                    <div class="guide-note positive">
+                        Share specific examples of how they helped you succeed.
+                    </div>
+                </div>
+
+                <div class="guidelines-content hidden" id="warningGuide">
+                    <h4>WARNING REPORTS</h4>
+                    <ul>
+                        <li>Unethical investors or predatory terms</li>
+                        <li>Vendors who didn't deliver promises</li>
+                        <li>Advisors who extracted without adding value</li>
+                        <li>Partners who acted in bad faith</li>
+                    </ul>
+                    <div class="guide-note warning">
+                        Stick to facts. "They did X" not "They're a scammer."
+                    </div>
+                </div>
+            </div>
+
+            <div class="intel-form-container">
+                <form id="badActorForm" class="intel-form">
+                    <div class="form-row">
+                        <div class="toggle-buttons">
+                            <button type="button" id="championBtn" class="toggle-btn active">⭐ Champion</button>
+                            <button type="button" id="warningBtn" class="toggle-btn">⚠ Warning</button>
+                        </div>
+                        <input type="hidden" id="reportType" name="reportType" value="champion">
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-field">
+                            <label for="actorType">TYPE</label>
+                            <select id="actorType" name="actorType" required>
+                                <option value="">Select...</option>
+                                <option value="Investor">Investor</option>
+                                <option value="Vendor">Vendor</option>
+                                <option value="Advisor">Advisor</option>
+                                <option value="Mentor">Mentor</option>
+                                <option value="Partner">Partner</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="actorName">NAME / COMPANY</label>
+                            <input type="text" id="actorName" name="actorName" required placeholder="Company or individual">
+                        </div>
+                    </div>
+
+                    <!-- Honeypot -->
+                    <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="whatHappened" id="descriptionLabel">WHY THEY'RE A CHAMPION</label>
+                        <textarea id="whatHappened" name="whatHappened" rows="4" required placeholder="Describe how they went above and beyond..."></textarea>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-field">
+                            <label for="timeline">TIMELINE</label>
+                            <input type="text" id="timeline" name="timeline" required placeholder="e.g., Q2 2024">
+                        </div>
+                        <div class="form-field">
+                            <label for="evidence" id="evidenceLabel">EVIDENCE (OPTIONAL)</label>
+                            <input type="text" id="evidence" name="evidence" placeholder="Links to docs, etc.">
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <span class="form-note">🔒 Anonymous • No personal data stored • Rate limited</span>
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <span>⭐ SUBMIT CHAMPION</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="formSuccess" class="form-message success" style="display: none;">
+                    ✓ Report submitted. Thank you for protecting the crew.
+                </div>
+                <div id="formError" class="form-message error" style="display: none;">
+                    ✗ Error submitting. Please try again.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord CTA Section -->
+    <section class="discord-section">
+        <div class="discord-bg">
+            <div class="discord-grid-lines"></div>
+        </div>
+
+        <div class="discord-content">
+            <div class="discord-badge">
+                <span class="badge-pulse"></span>
+                <span>100+ FOUNDERS ONLINE</span>
+            </div>
+
+            <h2 class="discord-title">
+                <span>JOIN THE</span>
+                <span class="glitch-text" data-text="REBELLION">REBELLION</span>
+            </h2>
+
+            <p class="discord-desc">
+                Real conversations. Real founders. Real support.<br>
+                No pitching. No performing. Just builders helping builders.
+            </p>
+
+            <div class="discord-features">
+                <div class="feature">
+                    <span class="feature-icon">🗺️</span>
+                    <span>Honest Navigation</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔒</span>
+                    <span>Founder-Only Channels</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">💰</span>
+                    <span>Deal Wisdom</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🍺</span>
+                    <span>IRL Meetups</span>
+                </div>
+            </div>
+
+            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="discord-cta">
+                <span class="cta-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                </span>
+                <span>JOIN MUTINY19 ON DISCORD</span>
+                <span class="cta-arrow">→</span>
+            </a>
+
+            <div class="discord-widget-wrapper" id="discordWidgetWrapper">
+                <div id="discordWidgetPlaceholder" class="discord-widget-placeholder">
+                    <span class="loading"></span>
+                    <span>Loading Discord widget...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaser Section for Sept 19, 2026 -->
+    <section class="teaser-section">
+        <div class="teaser-content">
+            <div class="teaser-date">
+                <span class="teaser-day">19</span>
+                <span class="teaser-month">SEPT</span>
+                <span class="teaser-year">2026</span>
+            </div>
+            <div class="teaser-text">
+                <span class="teaser-tag">// INTERNATIONAL TALK LIKE A PIRATE DAY</span>
+                <h3>SOMETHING'S COMING</h3>
+                <p>The 19th state. The 19th day. The 9th month.<br>Some numbers just align.</p>
+                <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="teaser-cta">
+                    Be there when it happens →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo" data-text="MUTINY19">MUTINY19</span>
+                <span class="footer-tagline">Digital Pirates of the 19th State</span>
+            </div>
+
+            <div class="footer-links">
+                <a href="https://github.com/mutiny19/mutiny19" target="_blank">GitHub</a>
+                <a href="https://discord.gg/hy3dAGEhuX" target="_blank">Discord</a>
+                <a href="#intel">Report Intel</a>
+            </div>
+
+            <div class="footer-credits">
+                <p>Built by founders, for founders.</p>
+                <p class="footer-ai">⚡ AI-powered by <a href="https://claude.ai" target="_blank">Claude</a> • Content synthesized from 100+ Indiana entrepreneurs</p>
+            </div>
+
+            <div class="footer-copy">
+                <span>© 2024-2026 MUTINY19</span>
+                <span class="footer-dot">•</span>
+                <span>No corporate sponsors</span>
+                <span class="footer-dot">•</span>
+                <span>No gatekeepers</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#events" class="mobile-link">EVENTS</a>
+            <a href="#manifesto" class="mobile-link">MANIFESTO</a>
+            <a href="#intel" class="mobile-link">INTEL</a>
+            <a href="https://discord.gg/hy3dAGEhuX" target="_blank" class="mobile-cta">JOIN THE CREW</a>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link, .mobile-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        // Story toggle
+        const storyToggle = document.getElementById('storyToggle');
+        const storyContent = document.getElementById('storyContent');
+
+        storyToggle?.addEventListener('click', () => {
+            storyToggle.classList.toggle('active');
+            storyContent.classList.toggle('active');
+        });
+
+        // Guidelines toggle
+        const guideChampion = document.getElementById('guideChampion');
+        const guideWarning = document.getElementById('guideWarning');
+        const championGuide = document.getElementById('championGuide');
+        const warningGuide = document.getElementById('warningGuide');
+
+        guideChampion?.addEventListener('click', () => {
+            guideChampion.classList.add('active');
+            guideWarning.classList.remove('active');
+            championGuide.classList.remove('hidden');
+            warningGuide.classList.add('hidden');
+        });
+
+        guideWarning?.addEventListener('click', () => {
+            guideWarning.classList.add('active');
+            guideChampion.classList.remove('active');
+            warningGuide.classList.remove('hidden');
+            championGuide.classList.add('hidden');
+        });
+
+        // Animate stats on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number[data-count]');
+            stats.forEach(stat => {
+                const target = parseInt(stat.dataset.count);
+                const duration = 2000;
+                const start = performance.now();
+
+                const animate = (now) => {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    stat.textContent = Math.floor(eased * target);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    }
+                };
+
+                requestAnimationFrame(animate);
+            });
+        };
+
+        // Intersection observer for stats
+        const statsSection = document.querySelector('.hero-stats');
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Lazy load Discord widget when it comes into view
+        const discordWidgetWrapper = document.getElementById('discordWidgetWrapper');
+        if (discordWidgetWrapper) {
+            const discordObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Replace placeholder with actual iframe
+                        const placeholder = document.getElementById('discordWidgetPlaceholder');
+                        if (placeholder) {
+                            const iframe = document.createElement('iframe');
+                            iframe.src = 'https://discord.com/widget?id=629420645414993961&theme=dark';
+                            iframe.width = '350';
+                            iframe.height = '400';
+                            iframe.allowTransparency = true;
+                            iframe.frameBorder = '0';
+                            iframe.sandbox = 'allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts';
+                            discordWidgetWrapper.replaceChild(iframe, placeholder);
+                        }
+                        discordObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '100px' });
+
+            discordObserver.observe(discordWidgetWrapper);
+        }
+    </script>
+</body>
+</html>
