@@ -188,11 +188,11 @@
             <aside class="filters-panel">
                 <div class="filter-header">
                     <span class="filter-icon">⚙</span>
-                    <span>FILTERS</span>
+                    <span data-i18n="filters.title">FILTERS</span>
                 </div>
 
                 <div class="filter-group">
-                    <label class="filter-label">TIMEFRAME</label>
+                    <label class="filter-label" data-i18n="filters.timeframe">TIMEFRAME</label>
                     <div class="date-inputs">
                         <input type="date" id="startDate" class="date-input">
                         <span class="date-separator">→</span>
@@ -201,50 +201,50 @@
                 </div>
 
                 <div class="filter-group">
-                    <label class="filter-label">WHAT'S INCLUDED</label>
+                    <label class="filter-label" data-i18n="filters.included">WHAT'S INCLUDED</label>
                     <div class="filter-checks">
                         <label class="check-item">
                             <input type="checkbox" id="filterFree" checked>
                             <span class="check-box"></span>
-                            <span class="check-label">FREE</span>
+                            <span class="check-label" data-i18n="filters.free">FREE</span>
                         </label>
                         <label class="check-item">
                             <input type="checkbox" id="filterFood" checked>
                             <span class="check-box"></span>
-                            <span class="check-label">FOOD</span>
+                            <span class="check-label" data-i18n="filters.food">FOOD</span>
                         </label>
                         <label class="check-item">
                             <input type="checkbox" id="filterAppetizers" checked>
                             <span class="check-box"></span>
-                            <span class="check-label">SNACKS</span>
+                            <span class="check-label" data-i18n="filters.snacks">SNACKS</span>
                         </label>
                         <label class="check-item">
                             <input type="checkbox" id="filterNonAlcohol" checked>
                             <span class="check-box"></span>
-                            <span class="check-label">COFFEE</span>
+                            <span class="check-label" data-i18n="filters.coffee">COFFEE</span>
                         </label>
                         <label class="check-item">
                             <input type="checkbox" id="filterAlcohol" checked>
                             <span class="check-box"></span>
-                            <span class="check-label">DRINKS</span>
+                            <span class="check-label" data-i18n="filters.drinks">DRINKS</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="filter-group">
-                    <label class="filter-label">VIEW MODE</label>
+                    <label class="filter-label" data-i18n="filters.viewMode">VIEW MODE</label>
                     <div class="view-toggle">
                         <button id="listViewBtn" class="view-btn active" data-view="list">
-                            <span>LIST</span>
+                            <span data-i18n="filters.list">LIST</span>
                         </button>
                         <button id="mapViewBtn" class="view-btn" data-view="map">
-                            <span>MAP</span>
+                            <span data-i18n="filters.map">MAP</span>
                         </button>
                     </div>
                 </div>
 
                 <button id="clearFilters" class="btn-reset">
-                    <span>↻</span> RESET ALL
+                    <span>↻</span> <span data-i18n="filters.reset">RESET ALL</span>
                 </button>
             </aside>
 
@@ -254,7 +254,7 @@
                 </div>
                 <div id="listContainer" class="list-container">
                     <div id="eventsLoading" class="loading">
-                        <span>Loading events...</span>
+                        <span data-i18n="events.loading">Loading events...</span>
                     </div>
                     <div id="eventsList" class="events-list"></div>
                 </div>

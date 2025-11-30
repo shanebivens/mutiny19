@@ -48,7 +48,37 @@ const translations = {
         'discord.badge': '100+ FOUNDERS ONLINE',
         'discord.joinThe': 'JOIN THE',
         'discord.rebellion': 'REBELLION',
-        'discord.desc': 'Real conversations. Real founders. Real support.<br>No pitching. No performing. Just builders helping builders.'
+        'discord.desc': 'Real conversations. Real founders. Real support.<br>No pitching. No performing. Just builders helping builders.',
+
+        // Filters
+        'filters.title': 'FILTERS',
+        'filters.timeframe': 'TIMEFRAME',
+        'filters.included': "WHAT'S INCLUDED",
+        'filters.free': 'FREE',
+        'filters.food': 'FOOD',
+        'filters.snacks': 'SNACKS',
+        'filters.coffee': 'COFFEE',
+        'filters.drinks': 'DRINKS',
+        'filters.viewMode': 'VIEW MODE',
+        'filters.list': 'LIST',
+        'filters.map': 'MAP',
+        'filters.reset': 'RESET ALL',
+
+        // Events
+        'events.loading': 'Loading events...',
+        'events.noEvents': 'No events found matching your filters.',
+        'events.error': 'Error loading events. Please refresh.',
+
+        // Event card labels
+        'event.free': 'Free',
+        'event.food': 'Food',
+        'event.appetizers': 'Appetizers',
+        'event.nonAlcohol': 'Non-Alcoholic',
+        'event.alcohol': 'Alcohol',
+        'event.date': 'Date',
+        'event.location': 'Location',
+        'event.organizer': 'Organizer',
+        'event.description': 'Description'
     },
     es: {
         // Navigation
@@ -88,9 +118,44 @@ const translations = {
         'discord.badge': '100+ FUNDADORES EN LÍNEA',
         'discord.joinThe': 'ÚNETE A LA',
         'discord.rebellion': 'REBELIÓN',
-        'discord.desc': 'Conversaciones reales. Fundadores reales. Apoyo real.<br>Sin pitch. Sin actuar. Solo constructores ayudando constructores.'
+        'discord.desc': 'Conversaciones reales. Fundadores reales. Apoyo real.<br>Sin pitch. Sin actuar. Solo constructores ayudando constructores.',
+
+        // Filters
+        'filters.title': 'FILTROS',
+        'filters.timeframe': 'PERÍODO',
+        'filters.included': 'QUÉ INCLUYE',
+        'filters.free': 'GRATIS',
+        'filters.food': 'COMIDA',
+        'filters.snacks': 'BOCADILLOS',
+        'filters.coffee': 'CAFÉ',
+        'filters.drinks': 'BEBIDAS',
+        'filters.viewMode': 'MODO DE VISTA',
+        'filters.list': 'LISTA',
+        'filters.map': 'MAPA',
+        'filters.reset': 'REINICIAR',
+
+        // Events
+        'events.loading': 'Cargando eventos...',
+        'events.noEvents': 'No se encontraron eventos con tus filtros.',
+        'events.error': 'Error al cargar eventos. Actualiza la página.',
+
+        // Event card labels
+        'event.free': 'Gratis',
+        'event.food': 'Comida',
+        'event.appetizers': 'Bocadillos',
+        'event.nonAlcohol': 'Sin Alcohol',
+        'event.alcohol': 'Alcohol',
+        'event.date': 'Fecha',
+        'event.location': 'Ubicación',
+        'event.organizer': 'Organizador',
+        'event.description': 'Descripción'
     }
 };
+
+// Get a translation string
+function t(key) {
+    return translations[currentLang]?.[key] || translations['en']?.[key] || key;
+}
 
 // Apply translations to the page
 function applyTranslations(lang) {
@@ -120,6 +185,8 @@ function applyTranslations(lang) {
 function toggleLanguage() {
     const newLang = currentLang === 'en' ? 'es' : 'en';
     applyTranslations(newLang);
+    // Re-render events with new translations
+    applyFilters();
 }
 
 // Initialize the application
@@ -290,11 +357,11 @@ function createPopupContent(event) {
 // Get event tags HTML
 function getEventTags(event) {
     const tags = [];
-    if (event.features.free) tags.push('<span class="event-tag free">💰 Free</span>');
-    if (event.features.food) tags.push('<span class="event-tag food">🍽️ Food</span>');
-    if (event.features.appetizers) tags.push('<span class="event-tag appetizers">🍕 Appetizers</span>');
-    if (event.features.nonAlcoholDrinks) tags.push('<span class="event-tag non-alcohol">🥤 Non-Alcoholic</span>');
-    if (event.features.alcoholDrinks) tags.push('<span class="event-tag alcohol">🍺 Alcohol</span>');
+    if (event.features.free) tags.push(`<span class="event-tag free">💰 ${t('event.free')}</span>`);
+    if (event.features.food) tags.push(`<span class="event-tag food">🍽️ ${t('event.food')}</span>`);
+    if (event.features.appetizers) tags.push(`<span class="event-tag appetizers">🍕 ${t('event.appetizers')}</span>`);
+    if (event.features.nonAlcoholDrinks) tags.push(`<span class="event-tag non-alcohol">🥤 ${t('event.nonAlcohol')}</span>`);
+    if (event.features.alcoholDrinks) tags.push(`<span class="event-tag alcohol">🍺 ${t('event.alcohol')}</span>`);
     return tags.join('');
 }
 
@@ -303,7 +370,7 @@ function displayEventsList(events) {
     const listContainer = document.getElementById('eventsList');
 
     if (events.length === 0) {
-        listContainer.innerHTML = '<p style="padding: 2rem; text-align: center; color: #ffeaa7; font-size: 1.1rem;">🏴‍☠️ No treasure here, matey!<br><span style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem; display: block;">Try adjusting your filters or check back later.</span></p>';
+        listContainer.innerHTML = `<p style="padding: 2rem; text-align: center; color: #ffeaa7; font-size: 1.1rem;">🏴‍☠️ ${t('events.noEvents')}</p>`;
         return;
     }
 
@@ -355,10 +422,10 @@ function showEventDetails(eventId) {
     modalBody.innerHTML = `
         <h2>${event.title}</h2>
         <div class="event-details">
-            <p><strong>📅 Date:</strong> ${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}${endDate ? ' - ' + endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''}</p>
-            <p><strong>📍 Location:</strong> ${event.location.name}<br>${event.location.address}</p>
-            <p><strong>👥 Organizer:</strong> ${event.organizer}</p>
-            <p><strong>ℹ️ Description:</strong><br>${event.description}</p>
+            <p><strong>📅 ${t('event.date')}:</strong> ${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}${endDate ? ' - ' + endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''}</p>
+            <p><strong>📍 ${t('event.location')}:</strong> ${event.location.name}<br>${event.location.address}</p>
+            <p><strong>👥 ${t('event.organizer')}:</strong> ${event.organizer}</p>
+            <p><strong>ℹ️ ${t('event.description')}:</strong><br>${event.description}</p>
             <div class="event-meta">${tags}</div>
             ${event.url ? `<p><a href="${event.url}" target="_blank" class="btn-calendar" style="margin-top: 1rem;">🏴‍☠️ Take Me There</a></p>` : ''}
             <div class="calendar-buttons">
