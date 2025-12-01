@@ -70,8 +70,8 @@ const translations = {
         'events.error': 'Error loading events. Please refresh.',
 
         // Submit event
-        'submit.title': 'SUBMIT AN EVENT',
-        'submit.desc': 'Know of an event we\'re missing? Drop the link below.',
+        'submit.title': 'NEW EVENT / EVENTS PAGE',
+        'submit.desc': 'Know of an event or events page we\'re missing? Drop the link.',
         'submit.placeholder': 'https://...',
         'submit.button': 'SUBMIT',
         'submit.success': '✓ Thanks! We\'ll check it out.',
@@ -273,8 +273,8 @@ const translations = {
         'events.error': 'Error al cargar eventos. Actualiza la página.',
 
         // Submit event
-        'submit.title': 'ENVIAR UN EVENTO',
-        'submit.desc': '¿Conoces un evento que nos falta? Deja el enlace abajo.',
+        'submit.title': 'NUEVO EVENTO / PÁGINA DE EVENTOS',
+        'submit.desc': '¿Conoces un evento o página de eventos que nos falta? Deja el enlace.',
         'submit.placeholder': 'https://...',
         'submit.button': 'ENVIAR',
         'submit.success': '✓ ¡Gracias! Lo revisaremos.',
