@@ -481,7 +481,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (langToggle) langToggle.addEventListener('click', toggleLanguage);
     if (mobileLangToggle) mobileLangToggle.addEventListener('click', toggleLanguage);
+
+    // Match events-main height to filters-panel on desktop
+    matchEventsPanelHeight();
+    window.addEventListener('resize', matchEventsPanelHeight);
 });
+
+// Match the events-main height to the filters-panel height on desktop
+function matchEventsPanelHeight() {
+    const filtersPanel = document.querySelector('.filters-panel');
+    const eventsMain = document.querySelector('.events-main');
+
+    if (!filtersPanel || !eventsMain) return;
+
+    // Only apply on desktop (1024px+)
+    if (window.innerWidth >= 1024) {
+        const filtersHeight = filtersPanel.offsetHeight;
+        eventsMain.style.height = filtersHeight + 'px';
+    } else {
+        eventsMain.style.height = '';
+    }
+}
 
 // Load events from JSON file
 async function loadEvents() {
