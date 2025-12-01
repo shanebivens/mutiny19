@@ -284,6 +284,18 @@
                 <button id="clearFilters" class="btn-reset">
                     <span>↻</span> <span data-i18n="filters.reset">RESET ALL</span>
                 </button>
+            </aside>
+
+            <main class="events-main">
+                <div id="mapContainer" class="map-container" style="display: none;">
+                    <div id="map"></div>
+                </div>
+                <div id="listContainer" class="list-container">
+                    <div id="eventsLoading" class="loading">
+                        <span data-i18n="events.loading">Loading events...</span>
+                    </div>
+                    <div id="eventsList" class="events-list"></div>
+                </div>
 
                 <!-- Submit Event Form -->
                 <div class="submit-event-card">
@@ -302,18 +314,6 @@
                     </form>
                     <div id="submitEventSuccess" class="submit-message success" style="display: none;" data-i18n="submit.success">✓ Thanks! We'll check it out.</div>
                     <div id="submitEventError" class="submit-message error" style="display: none;" data-i18n="submit.error">✗ Error. Try again.</div>
-                </div>
-            </aside>
-
-            <main class="events-main">
-                <div id="mapContainer" class="map-container" style="display: none;">
-                    <div id="map"></div>
-                </div>
-                <div id="listContainer" class="list-container">
-                    <div id="eventsLoading" class="loading">
-                        <span data-i18n="events.loading">Loading events...</span>
-                    </div>
-                    <div id="eventsList" class="events-list"></div>
                 </div>
             </main>
         </div>
