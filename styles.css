@@ -935,7 +935,7 @@ img {
     .events-container {
         display: grid;
         grid-template-columns: 280px 1fr;
-        align-items: start;
+        align-items: stretch;
     }
 
     .filters-panel {
@@ -943,13 +943,19 @@ img {
     }
 
     .events-main {
-        height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
     }
 
     #listContainer,
     #mapContainer {
-        height: 500px !important;
-        max-height: 500px !important;
+        flex: 1;
+        min-height: 350px;
+    }
+
+    .submit-event-card {
+        flex-shrink: 0;
     }
 }
 
@@ -1350,8 +1356,8 @@ img {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
-    height: 350px;
-    overflow-y: scroll;
+    min-height: 350px;
+    overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior: contain;
 }
