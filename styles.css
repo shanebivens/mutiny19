@@ -1205,18 +1205,14 @@ img {
 
 /* Submit Event Card */
 .submit-event-card {
-    margin-top: var(--space-xl);
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
     background: rgba(0, 240, 255, 0.05);
     border: 1px solid rgba(0, 240, 255, 0.2);
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-md) var(--space-xl);
-    max-width: var(--max-width);
-    margin-left: auto;
-    margin-right: auto;
+    gap: var(--space-sm) var(--space-lg);
 }
 
 .submit-event-card .submit-event-header {
@@ -1329,6 +1325,9 @@ img {
     min-height: 300px;
     max-width: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
 }
 
 .map-container {

@@ -296,26 +296,26 @@
                     </div>
                     <div id="eventsList" class="events-list"></div>
                 </div>
-            </main>
-        </div>
 
-        <!-- Submit Event Form -->
-        <div class="submit-event-card">
-            <div class="submit-event-header">
-                <span class="submit-icon">📡</span>
-                <span data-i18n="submit.title">NEW EVENT / EVENTS PAGE</span>
-            </div>
-            <p class="submit-desc" data-i18n="submit.desc">Know of an event or events page we're missing? Drop the link.</p>
-            <form id="submitEventForm" class="submit-event-form">
-                <input type="url" id="eventUrl" name="eventUrl" required placeholder="https://..." data-i18n-placeholder="submit.placeholder">
-                <!-- Honeypot -->
-                <div style="position: absolute; left: -9999px;" aria-hidden="true">
-                    <input type="text" id="eventWebsite" name="website" tabindex="-1" autocomplete="off">
+                <!-- Submit Event Form -->
+                <div class="submit-event-card">
+                    <div class="submit-event-header">
+                        <span class="submit-icon">📡</span>
+                        <span data-i18n="submit.title">NEW EVENT / EVENTS PAGE</span>
+                    </div>
+                    <p class="submit-desc" data-i18n="submit.desc">Know of an event or events page we're missing? Drop the link.</p>
+                    <form id="submitEventForm" class="submit-event-form">
+                        <input type="url" id="eventUrl" name="eventUrl" required placeholder="https://..." data-i18n-placeholder="submit.placeholder">
+                        <!-- Honeypot -->
+                        <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                            <input type="text" id="eventWebsite" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <button type="submit" class="submit-event-btn" data-i18n="submit.button">SUBMIT</button>
+                    </form>
+                    <div id="submitEventSuccess" class="submit-message success" style="display: none;" data-i18n="submit.success">✓ Thanks! We'll check it out.</div>
+                    <div id="submitEventError" class="submit-message error" style="display: none;" data-i18n="submit.error">✗ Error. Try again.</div>
                 </div>
-                <button type="submit" class="submit-event-btn" data-i18n="submit.button">SUBMIT</button>
-            </form>
-            <div id="submitEventSuccess" class="submit-message success" style="display: none;" data-i18n="submit.success">✓ Thanks! We'll check it out.</div>
-            <div id="submitEventError" class="submit-message error" style="display: none;" data-i18n="submit.error">✗ Error. Try again.</div>
+            </main>
         </div>
     </section>
 
