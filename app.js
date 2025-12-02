@@ -22,9 +22,9 @@ const translations = {
         'hero.badge': 'ACTIVE REBELLION',
         'hero.founders': 'FOUNDERS',
         'hero.revolt': 'MUTINY',
-        'hero.tagline': '100+ captains. Zero gatekeepers. One mission:',
-        'hero.mission': 'Build vessels that matter.',
-        'hero.scaffolding': 'This is scaffolding. You build the ship.',
+        'hero.tagline': 'From coffee shops to multinationals. One crew:',
+        'hero.mission': 'Founders building what\'s next.',
+        'hero.scaffolding': 'No consultants. No committees. Built by founders, for founders.',
         'hero.eventsMapped': 'PORTS CHARTED',
         'hero.citiesCovered': 'HARBORS MAPPED',
         'hero.founderSupport': 'CREW SUPPORT',
@@ -122,7 +122,7 @@ const translations = {
         'manifesto.card6.title': 'SHIPWRIGHTS ONLY',
         'manifesto.card6.desc': 'Not a social club. Not a beauty contest. A crew of captains actually building vessels. That\'s the whole manifest.',
         'manifesto.card7.title': 'FOUNDER-FORGED',
-        'manifesto.card7.desc': 'This is scaffolding, not scripture. What Mutiny19 becomes is up to those who show up. No committee decided this. You will.',
+        'manifesto.card7.desc': 'No surveys. No consultants. No cookie-cutter playbooks. This is scaffolding built by founders—what it becomes is up to those who show up and build.',
 
         // Docs
         'docs.title': 'FOUNDER-FRIENDLY DOCS',
@@ -228,9 +228,9 @@ const translations = {
         'hero.badge': 'REBELIÓN ACTIVA',
         'hero.founders': 'FUNDADORES',
         'hero.revolt': 'MOTÍN',
-        'hero.tagline': '100+ capitanes. Cero guardianes. Una misión:',
-        'hero.mission': 'Construir navíos que importan.',
-        'hero.scaffolding': 'Esto es andamiaje. Tú construyes el barco.',
+        'hero.tagline': 'Desde cafeterías hasta multinacionales. Una tripulación:',
+        'hero.mission': 'Fundadores construyendo lo que viene.',
+        'hero.scaffolding': 'Sin consultores. Sin comités. Hecho por fundadores, para fundadores.',
         'hero.eventsMapped': 'PUERTOS CARTOGRAFIADOS',
         'hero.citiesCovered': 'BAHÍAS MAPEADAS',
         'hero.founderSupport': 'APOYO DE TRIPULACIÓN',
@@ -328,7 +328,7 @@ const translations = {
         'manifesto.card6.title': 'SOLO CONSTRUCTORES DE NAVÍOS',
         'manifesto.card6.desc': 'No es un club social. No es un concurso de belleza. Una tripulación de capitanes realmente construyendo navíos. Ese es todo el manifiesto.',
         'manifesto.card7.title': 'FORJADO POR FUNDADORES',
-        'manifesto.card7.desc': 'Esto es andamiaje, no escritura sagrada. En lo que se convierta Mutiny19 depende de quienes aparezcan. Ningún comité decidió esto. Tú lo harás.',
+        'manifesto.card7.desc': 'Sin encuestas. Sin consultores. Sin playbooks de molde. Esto es andamiaje construido por fundadores—en lo que se convierta depende de quienes aparezcan y construyan.',
 
         // Docs
         'docs.title': 'DOCUMENTOS AMIGABLES',
