@@ -21,7 +21,7 @@ const translations = {
         // Hero
         'hero.badge': 'ACTIVE REBELLION',
         'hero.founders': 'FOUNDERS',
-        'hero.revolt': 'REVOLT',
+        'hero.revolt': 'MUTINY',
         'hero.tagline': '100+ captains. Zero gatekeepers. One mission:',
         'hero.mission': 'Build vessels that matter.',
         'hero.eventsMapped': 'PORTS CHARTED',
@@ -224,7 +224,7 @@ const translations = {
         // Hero
         'hero.badge': 'REBELIÓN ACTIVA',
         'hero.founders': 'FUNDADORES',
-        'hero.revolt': 'REBELIÓN',
+        'hero.revolt': 'MOTÍN',
         'hero.tagline': '100+ capitanes. Cero guardianes. Una misión:',
         'hero.mission': 'Construir navíos que importan.',
         'hero.eventsMapped': 'PUERTOS CARTOGRAFIADOS',
