@@ -13,7 +13,7 @@ const translations = {
     en: {
         // Navigation
         'nav.events': 'EVENTS',
-        'nav.manifesto': 'MANIFESTO',
+        'nav.manifesto': 'ETHOS',
         'nav.intel': 'INTEL',
         'nav.join': 'JOIN_CREW',
         'nav.joinCrew': 'JOIN THE CREW',
@@ -24,10 +24,11 @@ const translations = {
         'hero.revolt': 'MUTINY',
         'hero.tagline': '100+ captains. Zero gatekeepers. One mission:',
         'hero.mission': 'Build vessels that matter.',
+        'hero.scaffolding': 'This is scaffolding. You build the ship.',
         'hero.eventsMapped': 'PORTS CHARTED',
         'hero.citiesCovered': 'HARBORS MAPPED',
         'hero.founderSupport': 'CREW SUPPORT',
-        'hero.joinRebellion': 'JOIN THE CREW',
+        'hero.joinRebellion': 'BUILD WITH US',
         'hero.exploreEvents': 'CHART YOUR COURSE',
 
         // Events
@@ -35,8 +36,8 @@ const translations = {
         'events.title': 'PLOT YOUR COURSE',
         'events.desc': 'Every founder port in Indiana. Auto-pillaged. No curation. You choose your voyage.',
 
-        // Manifesto
-        'manifesto.tag': '// PRINCIPLES',
+        // Ethos
+        'manifesto.tag': '// ETHOS',
         'manifesto.title': 'THE MUTINY19 CODE',
 
         // Intel
@@ -120,6 +121,8 @@ const translations = {
         'manifesto.card5.date': 'December 11, 1816 → Forever',
         'manifesto.card6.title': 'SHIPWRIGHTS ONLY',
         'manifesto.card6.desc': 'Not a social club. Not a beauty contest. A crew of captains actually building vessels. That\'s the whole manifest.',
+        'manifesto.card7.title': 'FOUNDER-FORGED',
+        'manifesto.card7.desc': 'This is scaffolding, not scripture. What Mutiny19 becomes is up to those who show up. No committee decided this. You will.',
 
         // Docs
         'docs.title': 'FOUNDER-FRIENDLY DOCS',
@@ -216,7 +219,7 @@ const translations = {
     es: {
         // Navigation
         'nav.events': 'EVENTOS',
-        'nav.manifesto': 'MANIFIESTO',
+        'nav.manifesto': 'ETHOS',
         'nav.intel': 'INTEL',
         'nav.join': 'ÚNETE',
         'nav.joinCrew': 'ÚNETE A LA TRIPULACIÓN',
@@ -227,10 +230,11 @@ const translations = {
         'hero.revolt': 'MOTÍN',
         'hero.tagline': '100+ capitanes. Cero guardianes. Una misión:',
         'hero.mission': 'Construir navíos que importan.',
+        'hero.scaffolding': 'Esto es andamiaje. Tú construyes el barco.',
         'hero.eventsMapped': 'PUERTOS CARTOGRAFIADOS',
         'hero.citiesCovered': 'BAHÍAS MAPEADAS',
         'hero.founderSupport': 'APOYO DE TRIPULACIÓN',
-        'hero.joinRebellion': 'ÚNETE A LA TRIPULACIÓN',
+        'hero.joinRebellion': 'CONSTRUYE CON NOSOTROS',
         'hero.exploreEvents': 'TRAZA TU RUMBO',
 
         // Events
@@ -239,7 +243,7 @@ const translations = {
         'events.desc': 'Cada puerto de fundadores en Indiana. Auto-saqueado. Sin curación. Tú eliges tu viaje.',
 
         // Manifesto
-        'manifesto.tag': '// PRINCIPIOS',
+        'manifesto.tag': '// ETHOS',
         'manifesto.title': 'EL CÓDIGO MUTINY19',
 
         // Intel
@@ -323,6 +327,8 @@ const translations = {
         'manifesto.card5.date': '11 de Diciembre, 1816 → Siempre',
         'manifesto.card6.title': 'SOLO CONSTRUCTORES DE NAVÍOS',
         'manifesto.card6.desc': 'No es un club social. No es un concurso de belleza. Una tripulación de capitanes realmente construyendo navíos. Ese es todo el manifiesto.',
+        'manifesto.card7.title': 'FORJADO POR FUNDADORES',
+        'manifesto.card7.desc': 'Esto es andamiaje, no escritura sagrada. En lo que se convierta Mutiny19 depende de quienes aparezcan. Ningún comité decidió esto. Tú lo harás.',
 
         // Docs
         'docs.title': 'DOCUMENTOS AMIGABLES',

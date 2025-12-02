@@ -587,6 +587,15 @@ img {
     font-weight: 600;
 }
 
+.hero-desc .scaffolding-text {
+    display: block;
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--cyan);
+    font-style: italic;
+    opacity: 0.9;
+}
+
 .hero-stats {
     display: flex;
     gap: var(--space-xl);
