@@ -56,17 +56,33 @@ class EventScraper:
 
         try:
             with sync_playwright() as p:
-                # Launch browser in headless mode
-                browser = p.chromium.launch(headless=True)
-                page = browser.new_page()
+                # Launch browser with stealth settings to avoid bot detection
+                browser = p.chromium.launch(
+                    headless=True,
+                    args=[
+                        '--disable-blink-features=AutomationControlled',
+                        '--disable-dev-shm-usage',
+                        '--no-sandbox'
+                    ]
+                )
 
-                # Set user agent
-                page.set_extra_http_headers({
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                })
+                # Create context with realistic settings
+                context = browser.new_context(
+                    viewport={'width': 1920, 'height': 1080},
+                    user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                )
 
-                # Navigate to URL (use domcontentloaded for faster loading)
-                page.goto(url, wait_until='domcontentloaded', timeout=30000)
+                page = context.new_page()
+
+                # Hide webdriver property
+                page.add_init_script("""
+                    Object.defineProperty(navigator, 'webdriver', {
+                        get: () => undefined
+                    });
+                """)
+
+                # Navigate to URL with networkidle for better JS rendering
+                page.goto(url, wait_until='networkidle', timeout=45000)
 
                 # Wait for specific selector if provided
                 if wait_selector:
@@ -75,17 +91,28 @@ class EventScraper:
                     except:
                         print(f"  Selector {wait_selector} not found, continuing anyway")
                 else:
-                    # Just wait a bit for dynamic content to load
+                    # Wait longer for dynamic content to fully load
                     page.wait_for_timeout(wait_time)
 
                 # Get the rendered HTML
                 content = page.content()
+
+                # Clean up
+                context.close()
                 browser.close()
 
                 return content
 
         except Exception as e:
             print(f"  Playwright error: {e}")
+            # Try to clean up if error occurred
+            try:
+                if 'context' in locals():
+                    context.close()
+                if 'browser' in locals():
+                    browser.close()
+            except:
+                pass
             return None
 
     def geocode_address(self, address: str) -> Dict[str, Any]:
@@ -329,52 +356,103 @@ class EventScraper:
     def scrape_luma(self, source: Dict[str, Any]):
         """Scrape a single Luma event page"""
         try:
+            # Try with Playwright first for full JavaScript rendering
             html_content = self.fetch_with_playwright(
                 source['url'],
                 wait_selector='h1',
-                wait_time=5000
+                wait_time=8000
             )
+
+            # If Playwright fails (anti-bot detection), fall back to static HTML parsing
             if not html_content:
-                print(f"  Could not fetch Luma event page")
-                return
+                print(f"  Playwright failed, trying static HTML fallback...")
+                try:
+                    headers = {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+                    }
+                    response = requests.get(source['url'], headers=headers, timeout=15)
+                    html_content = response.text
+                except Exception as e:
+                    print(f"  Static HTML fetch also failed: {e}")
+                    return
 
             soup = BeautifulSoup(html_content, 'html.parser')
 
-            # Extract title (usually in h1)
+            # Extract title - try h1 first, then fall back to meta og:title
+            title = None
             title_elem = soup.find('h1')
-            if not title_elem:
+            if title_elem:
+                title = title_elem.get_text(strip=True)
+            else:
+                # Fall back to meta tags
+                og_title = soup.find('meta', property='og:title')
+                if og_title and og_title.get('content'):
+                    title = og_title.get('content').replace(' · Luma', '').strip()
+
+            if not title:
                 print(f"  Could not find title on Luma page")
                 return
 
-            title = title_elem.get_text(strip=True)
-
-            # Get description (look for common description patterns)
+            # Get description - try rendered content first, then meta tags
             description = title
             desc_elem = soup.find(['div', 'p'], class_=re.compile('description|about|details', re.I))
             if desc_elem:
                 description = desc_elem.get_text(strip=True)[:500]
+            else:
+                # Fall back to meta description
+                meta_desc = soup.find('meta', property='og:description') or soup.find('meta', attrs={'name': 'description'})
+                if meta_desc and meta_desc.get('content'):
+                    description = meta_desc.get('content')[:500]
 
-            # Try to find date/time
-            # Luma often uses time elements with datetime attribute
-            date_elem = soup.find('time')
+            # Try to find date/time from multiple sources
             event_date = None
 
-            if date_elem and date_elem.get('datetime'):
+            # 0. Check for manual date override in source definition
+            if source.get('date'):
                 try:
-                    from dateutil import parser as date_parser
-                    event_date = date_parser.parse(date_elem.get('datetime'))
+                    event_date = date_parser.parse(source['date'])
                     if event_date.tzinfo is not None:
                         event_date = event_date.replace(tzinfo=None)
-                except:
-                    pass
+                    print(f"  Using manual date override: {event_date}")
+                except Exception as e:
+                    print(f"  Error parsing manual date: {e}")
 
-            # If no date found in time element, try to find in text
+            # 1. Try JSON-LD structured data (best for SEO-optimized pages like Luma)
             if not event_date:
-                # Look for common date patterns in the page text
+                json_ld_scripts = soup.find_all('script', type='application/ld+json')
+                for script in json_ld_scripts:
+                    try:
+                        data = json.loads(script.string)
+                        # Handle both single Event and list of events
+                        if isinstance(data, dict):
+                            data = [data]
+                        for item in data:
+                            if item.get('@type') == 'Event' and item.get('startDate'):
+                                event_date = date_parser.parse(item['startDate'])
+                                if event_date.tzinfo is not None:
+                                    event_date = event_date.replace(tzinfo=None)
+                                break
+                        if event_date:
+                            break
+                    except:
+                        pass
+
+            # 2. Try time elements with datetime attribute
+            if not event_date:
+                date_elem = soup.find('time')
+                if date_elem and date_elem.get('datetime'):
+                    try:
+                        event_date = date_parser.parse(date_elem.get('datetime'))
+                        if event_date.tzinfo is not None:
+                            event_date = event_date.replace(tzinfo=None)
+                    except:
+                        pass
+
+            # 3. Try finding date in text content
+            if not event_date:
                 date_text_elem = soup.find(['div', 'span', 'p'], class_=re.compile('date|time|when', re.I))
                 if date_text_elem:
                     try:
-                        from dateutil import parser as date_parser
                         event_date = date_parser.parse(date_text_elem.get_text())
                         if event_date.tzinfo is not None:
                             event_date = event_date.replace(tzinfo=None)
@@ -395,15 +473,25 @@ class EventScraper:
             location_text = None
             venue_name = None
 
-            # Look for venue/location elements
-            location_elem = soup.find(['div', 'span', 'p', 'address'], class_=re.compile('location|venue|address|where|place', re.I))
-            if location_elem:
-                location_text = location_elem.get_text(strip=True)
+            # Check for manual location override in source definition
+            if source.get('location'):
+                location_text = source['location']
+                # Extract venue name from location (first part before comma)
+                if ',' in location_text:
+                    venue_name = location_text.split(',')[0].strip()
+                print(f"  Using manual location override: {location_text}")
 
-                # Try to find venue name separately
-                venue_elem = soup.find(['div', 'span', 'h2', 'h3'], class_=re.compile('venue.*name|location.*name', re.I))
-                if venue_elem:
-                    venue_name = venue_elem.get_text(strip=True)
+            # If no manual override, try to scrape from page
+            if not location_text:
+                # Look for venue/location elements
+                location_elem = soup.find(['div', 'span', 'p', 'address'], class_=re.compile('location|venue|address|where|place', re.I))
+                if location_elem:
+                    location_text = location_elem.get_text(strip=True)
+
+                    # Try to find venue name separately
+                    venue_elem = soup.find(['div', 'span', 'h2', 'h3'], class_=re.compile('venue.*name|location.*name', re.I))
+                    if venue_elem:
+                        venue_name = venue_elem.get_text(strip=True)
 
             # Build location data - store raw address for geocoding later
             if location_text and len(location_text) > 5:
