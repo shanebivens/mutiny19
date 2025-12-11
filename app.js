@@ -21,7 +21,7 @@ const translations = {
         // Hero
         'hero.badge': 'FOUNDER WATERS',
         'hero.founders': 'FOUNDERS',
-        'hero.revolt': 'MUTINY',
+        'hero.revolt': 'MUTINY19',
         'hero.tagline': 'From corner taverns to flagship fleets. One crew:',
         'hero.mission': 'Captains charting what\'s next.',
         'hero.scaffolding': 'Your deck. Your helm. Built by captains, for captains.',
@@ -232,7 +232,7 @@ const translations = {
         // Hero
         'hero.badge': 'AGUAS DE FUNDADORES',
         'hero.founders': 'FUNDADORES',
-        'hero.revolt': 'MOTÍN',
+        'hero.revolt': 'MOTÍN19',
         'hero.tagline': 'Desde tabernas de esquina hasta flotas insignia. Una tripulación:',
         'hero.mission': 'Capitanes trazando lo que viene.',
         'hero.scaffolding': 'Tu cubierta. Tu timón. Construido por capitanes, para capitanes.',
