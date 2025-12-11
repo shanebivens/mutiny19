@@ -317,12 +317,25 @@
                     </div>
                     <p class="submit-desc" data-i18n="submit.desc">Know of an event or events page we're missing? Drop the link.</p>
                     <form id="submitEventForm" class="submit-event-form">
-                        <input type="url" id="eventUrl" name="eventUrl" required placeholder="https://..." data-i18n-placeholder="submit.placeholder">
+                        <div class="submit-event-form-inputs">
+                            <input type="url" id="eventUrl" name="eventUrl" required placeholder="https://..." data-i18n-placeholder="submit.placeholder">
+                            <button type="submit" class="submit-event-btn" data-i18n="submit.button">SUBMIT</button>
+                        </div>
+
+                        <!-- Captain-Forged Checkbox -->
+                        <label class="captain-forged-checkbox">
+                            <input type="checkbox" id="captainForgedSubmit" name="captainForged">
+                            <span class="check-box-submit"></span>
+                            <span class="captain-forged-label">
+                                <span class="captain-forged-title" data-i18n="submit.captainForged">⚓ Captain-Forged Event</span>
+                                <span class="captain-forged-hint" data-i18n="submit.captainForgedHint">Check if this event is created & hosted by a founder (not a corporate sponsor, accelerator, or third-party organizer)</span>
+                            </span>
+                        </label>
+
                         <!-- Honeypot -->
                         <div style="position: absolute; left: -9999px;" aria-hidden="true">
                             <input type="text" id="eventWebsite" name="website" tabindex="-1" autocomplete="off">
                         </div>
-                        <button type="submit" class="submit-event-btn" data-i18n="submit.button">SUBMIT</button>
                     </form>
                     <div id="submitEventSuccess" class="submit-message success" style="display: none;" data-i18n="submit.success">✓ Thanks! We'll check it out.</div>
                     <div id="submitEventError" class="submit-message error" style="display: none;" data-i18n="submit.error">✗ Error. Try again.</div>
@@ -721,16 +734,18 @@
             }
 
             const eventUrl = document.getElementById('eventUrl').value;
+            const isCaptainForged = document.getElementById('captainForgedSubmit').checked;
 
             // Discord webhook URL
             const webhookUrl = 'https://discord.com/api/webhooks/1445107714928672920/jw0nSAPqtmE8gQ04vTjKuXM1W2xpsGa4mm7XBgV3EPpq93myRrxE92unmk5gsH0pbmnq';
 
             try {
+                const captainForgedTag = isCaptainForged ? '\n⚓ **Captain-Forged Event** (Created & hosted by a founder)' : '';
                 const response = await fetch(webhookUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        content: `📡 **New Event Submission**\n${eventUrl}`,
+                        content: `📡 **New Event Submission**\n${eventUrl}${captainForgedTag}`,
                         username: 'Mutiny19 Event Bot'
                     })
                 });

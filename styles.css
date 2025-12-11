@@ -1343,8 +1343,14 @@ img {
 
 .submit-event-form {
     display: flex;
+    flex-direction: column;
     gap: var(--space-xs);
     position: relative;
+}
+
+.submit-event-form-inputs {
+    display: flex;
+    gap: var(--space-xs);
 }
 
 .submit-event-form input[type="url"] {
@@ -1386,6 +1392,77 @@ img {
 
 .submit-event-btn:hover {
     background: var(--text);
+}
+
+/* Captain-Forged Checkbox in Submit Form */
+.captain-forged-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    cursor: pointer;
+    padding: var(--space-sm);
+    margin: var(--space-sm) 0;
+    background: rgba(0, 242, 255, 0.03);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    border-radius: 6px;
+    transition: all var(--transition-fast);
+    width: 100%;
+}
+
+.captain-forged-checkbox:hover {
+    background: rgba(0, 242, 255, 0.08);
+    border-color: var(--accent);
+}
+
+.captain-forged-checkbox input {
+    display: none;
+}
+
+.check-box-submit {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    margin-top: 2px;
+}
+
+.captain-forged-checkbox input:checked + .check-box-submit {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.captain-forged-checkbox input:checked + .check-box-submit::after {
+    content: '✓';
+    font-size: 0.7rem;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.captain-forged-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.captain-forged-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+}
+
+.captain-forged-hint {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    line-height: 1.4;
 }
 
 .submit-message {
