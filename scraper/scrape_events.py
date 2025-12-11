@@ -364,7 +364,8 @@ class EventScraper:
                 'url': source['url'],
                 'date': event_date.isoformat(),
                 'source': source.get('name', 'Luma Event'),
-                'location': location_data
+                'location': location_data,
+                'captainForged': source.get('captainForged', False)
             }
 
             self._add_event(event_data)
@@ -2547,12 +2548,17 @@ class EventScraper:
             alc_keywords = ['happy hour', 'beer', 'wine', 'cocktails', 'bar', 'drinks', 'alcohol', 'brewery', 'spirits', 'party']
             has_alcohol = any(keyword in combined_text for keyword in alc_keywords)
 
+            # Check if event is marked as captain-forged (founder-created)
+            # This can be set in the source config or inherited from the event data
+            is_captain_forged = event.get('captainForged', False)
+
             event['features'] = {
                 'free': is_free,
                 'food': has_food,
                 'appetizers': has_appetizers,
                 'nonAlcoholDrinks': has_nonalc,  # Only if explicitly mentioned
-                'alcoholDrinks': has_alcohol
+                'alcoholDrinks': has_alcohol,
+                'captainForged': is_captain_forged
             }
 
             # Add missing fields

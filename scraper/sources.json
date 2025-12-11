@@ -628,7 +628,8 @@
       "type": "luma_event",
       "url": "https://luma.com/7e18504n",
       "enabled": true,
-      "description": "Indianapolis tech founders networking event"
+      "description": "Indianapolis tech founders networking event",
+      "captainForged": true
     }
   ],
   "keywords": [

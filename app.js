@@ -60,6 +60,7 @@ const translations = {
         'filters.snacks': 'SNACKS',
         'filters.coffee': 'COFFEE',
         'filters.drinks': 'DRINKS',
+        'filters.captainForged': 'CAPTAIN-FORGED',
         'filters.viewMode': 'VIEW MODE',
         'filters.list': 'LIST',
         'filters.map': 'MAP',
@@ -84,6 +85,7 @@ const translations = {
         'event.appetizers': 'Appetizers',
         'event.nonAlcohol': 'Non-Alcoholic',
         'event.alcohol': 'Alcohol',
+        'event.captainForged': 'Captain-Forged',
         'event.date': 'Date',
         'event.location': 'Location',
         'event.organizer': 'Organizer',
@@ -266,6 +268,7 @@ const translations = {
         'filters.snacks': 'BOCADILLOS',
         'filters.coffee': 'CAFÉ',
         'filters.drinks': 'BEBIDAS',
+        'filters.captainForged': 'FORJADO POR CAPITANES',
         'filters.viewMode': 'MODO DE VISTA',
         'filters.list': 'LISTA',
         'filters.map': 'MAPA',
@@ -290,6 +293,7 @@ const translations = {
         'event.appetizers': 'Bocadillos',
         'event.nonAlcohol': 'Sin Alcohol',
         'event.alcohol': 'Alcohol',
+        'event.captainForged': 'Forjado por Capitanes',
         'event.date': 'Fecha',
         'event.location': 'Ubicación',
         'event.organizer': 'Organizador',
@@ -659,6 +663,7 @@ function createPopupContent(event) {
 // Get event tags HTML
 function getEventTags(event) {
     const tags = [];
+    if (event.features.captainForged) tags.push(`<span class="event-tag captain-forged">⚓ ${t('event.captainForged')}</span>`);
     if (event.features.free) tags.push(`<span class="event-tag free">💰 ${t('event.free')}</span>`);
     if (event.features.food) tags.push(`<span class="event-tag food">🍽️ ${t('event.food')}</span>`);
     if (event.features.appetizers) tags.push(`<span class="event-tag appetizers">🍕 ${t('event.appetizers')}</span>`);
@@ -809,6 +814,7 @@ function applyFilters() {
     const filterAppetizers = document.getElementById('filterAppetizers').checked;
     const filterNonAlcohol = document.getElementById('filterNonAlcohol').checked;
     const filterAlcohol = document.getElementById('filterAlcohol').checked;
+    const filterCaptainForged = document.getElementById('filterCaptainForged').checked;
 
     let filteredEvents = eventsData.filter(event => {
         const eventDate = new Date(event.date);
@@ -823,10 +829,11 @@ function applyFilters() {
             (filterFood && event.features.food) ||
             (filterAppetizers && event.features.appetizers) ||
             (filterNonAlcohol && event.features.nonAlcoholDrinks) ||
-            (filterAlcohol && event.features.alcoholDrinks);
+            (filterAlcohol && event.features.alcoholDrinks) ||
+            (filterCaptainForged && event.features.captainForged);
 
         // If no filters are checked, show all events
-        const anyFilterChecked = filterFree || filterFood || filterAppetizers || filterNonAlcohol || filterAlcohol;
+        const anyFilterChecked = filterFree || filterFood || filterAppetizers || filterNonAlcohol || filterAlcohol || filterCaptainForged;
 
         return !anyFilterChecked || hasCheckedFeature;
     });
@@ -848,6 +855,7 @@ function setupEventListeners() {
     document.getElementById('filterAppetizers').addEventListener('change', applyFilters);
     document.getElementById('filterNonAlcohol').addEventListener('change', applyFilters);
     document.getElementById('filterAlcohol').addEventListener('change', applyFilters);
+    document.getElementById('filterCaptainForged').addEventListener('change', applyFilters);
 
     // Clear filters
     document.getElementById('clearFilters').addEventListener('click', () => {
@@ -858,6 +866,7 @@ function setupEventListeners() {
         document.getElementById('filterAppetizers').checked = true;
         document.getElementById('filterNonAlcohol').checked = true;
         document.getElementById('filterAlcohol').checked = true;
+        document.getElementById('filterCaptainForged').checked = true;
         applyFilters();
     });
 

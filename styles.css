@@ -1217,6 +1217,21 @@ img {
     color: var(--text);
 }
 
+.check-item-highlight {
+    background: rgba(0, 242, 255, 0.05);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+}
+
+.check-item-highlight .check-label {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.check-item-highlight:hover {
+    background: rgba(0, 242, 255, 0.1);
+}
+
 /* View Toggle */
 .view-toggle {
     display: flex;
@@ -1531,6 +1546,15 @@ img {
     background: var(--surface);
     padding: 2px 8px;
     border-radius: 3px;
+}
+
+.event-tag.captain-forged {
+    color: var(--accent);
+    background: rgba(0, 242, 255, 0.15);
+    border: 1px solid var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .event-tag.free {
