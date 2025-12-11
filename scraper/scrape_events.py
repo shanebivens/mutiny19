@@ -14,6 +14,8 @@ from bs4 import BeautifulSoup
 from dateutil import parser as date_parser
 import re
 from icalendar import Calendar
+from urllib.parse import quote
+import hashlib
 
 # Playwright imports (optional - only used for JavaScript-heavy sites)
 try:
@@ -34,6 +36,7 @@ class EventScraper:
 
         self.events = []
         self.seen_events = set()  # To avoid duplicates
+        self.geocode_cache = {}  # Cache for geocoded addresses
 
     def fetch_with_playwright(self, url: str, wait_selector: str = None, wait_time: int = 3000) -> str:
         """
@@ -84,6 +87,56 @@ class EventScraper:
         except Exception as e:
             print(f"  Playwright error: {e}")
             return None
+
+    def geocode_address(self, address: str) -> Dict[str, Any]:
+        """
+        Geocode an address using the free Nominatim API (OpenStreetMap)
+
+        Args:
+            address: Full or partial address to geocode
+
+        Returns:
+            Dictionary with lat, lng, and formatted address, or None if geocoding fails
+        """
+        # Check cache first
+        cache_key = address.lower().strip()
+        if cache_key in self.geocode_cache:
+            return self.geocode_cache[cache_key]
+
+        try:
+            # Use Nominatim API (free, rate limited to 1 req/sec)
+            # Add "Indiana" to help narrow down results
+            search_query = f"{address}, Indiana" if "indiana" not in address.lower() and ", in" not in address.lower() else address
+            url = f"https://nominatim.openstreetmap.org/search?q={quote(search_query)}&format=json&addressdetails=1&limit=1"
+
+            headers = {
+                'User-Agent': 'Mutiny19 Event Scraper (contact: crew@mutiny19.com)'
+            }
+
+            # Respect rate limit (1 req/sec)
+            import time
+            time.sleep(1.1)
+
+            response = requests.get(url, headers=headers, timeout=10)
+
+            if response.status_code == 200:
+                results = response.json()
+                if results and len(results) > 0:
+                    result = results[0]
+                    location_data = {
+                        'lat': float(result['lat']),
+                        'lng': float(result['lon']),
+                        'address': result.get('display_name', address)
+                    }
+
+                    # Cache the result
+                    self.geocode_cache[cache_key] = location_data
+                    return location_data
+
+        except Exception as e:
+            print(f"  Geocoding error for '{address}': {e}")
+
+        return None
 
     def scrape_all(self) -> List[Dict[str, Any]]:
         """Scrape all enabled sources"""
@@ -338,25 +391,33 @@ class EventScraper:
                 print(f"  Skipping past event: {title}")
                 return
 
-            # Try to find location
+            # Try to find location/venue information
             location_text = None
-            location_elem = soup.find(['div', 'span', 'p'], class_=re.compile('location|venue|address|where', re.I))
+            venue_name = None
+
+            # Look for venue/location elements
+            location_elem = soup.find(['div', 'span', 'p', 'address'], class_=re.compile('location|venue|address|where|place', re.I))
             if location_elem:
                 location_text = location_elem.get_text(strip=True)
 
-            # Build location data
-            location_data = {'name': 'Indianapolis', 'address': 'Indianapolis, IN', 'lat': 39.7684, 'lng': -86.1581}
+                # Try to find venue name separately
+                venue_elem = soup.find(['div', 'span', 'h2', 'h3'], class_=re.compile('venue.*name|location.*name', re.I))
+                if venue_elem:
+                    venue_name = venue_elem.get_text(strip=True)
 
-            if location_text:
-                # Try to extract city from location text
-                location_lower = location_text.lower()
-                if 'indianapolis' in location_lower or 'indy' in location_lower:
-                    location_data = {'name': location_text, 'address': 'Indianapolis, IN', 'lat': 39.7684, 'lng': -86.1581}
-                elif 'carmel' in location_lower:
-                    location_data = {'name': location_text, 'address': 'Carmel, IN', 'lat': 39.9784, 'lng': -86.1180}
-                elif 'fishers' in location_lower:
-                    location_data = {'name': location_text, 'address': 'Fishers, IN', 'lat': 39.9567, 'lng': -86.0139}
-                # Add more cities as needed
+            # Build location data - store raw address for geocoding later
+            if location_text and len(location_text) > 5:
+                # Store the extracted address for geocoding in enrich_events
+                location_data = {
+                    'name': venue_name or location_text.split(',')[0] if ',' in location_text else location_text,
+                    'address': location_text
+                }
+            else:
+                # Fallback if no location found
+                location_data = {
+                    'name': 'Indianapolis',
+                    'address': 'Indianapolis, IN'
+                }
 
             event_data = {
                 'title': title,
@@ -2485,20 +2546,39 @@ class EventScraper:
         }
 
         for event in self.events:
-            # Try to determine location from title or URL
+            # Try to determine location from event data
             location_found = False
-            title_lower = event.get('title', '').lower()
 
-            for city, coords in indiana_cities.items():
-                if city in title_lower:
-                    event['location'] = {
-                        'name': city.title(),
-                        'address': f'{city.title()}, Indiana',
-                        'lat': coords['lat'],
-                        'lng': coords['lng']
-                    }
-                    location_found = True
-                    break
+            # If event already has a location with address, try to geocode it
+            if 'location' in event and 'address' in event['location']:
+                address = event['location'].get('address', '')
+                venue_name = event['location'].get('name', '')
+
+                # Try geocoding the full address if it looks complete
+                if address and (',' in address or len(address.split()) >= 3):
+                    geocoded = self.geocode_address(address)
+                    if geocoded:
+                        event['location'] = {
+                            'name': venue_name or address.split(',')[0],
+                            'address': address,
+                            'lat': geocoded['lat'],
+                            'lng': geocoded['lng']
+                        }
+                        location_found = True
+
+            # If no location yet, try to find city in title
+            if not location_found:
+                title_lower = event.get('title', '').lower()
+                for city, coords in indiana_cities.items():
+                    if city in title_lower:
+                        event['location'] = {
+                            'name': city.title(),
+                            'address': f'{city.title()}, Indiana',
+                            'lat': coords['lat'],
+                            'lng': coords['lng']
+                        }
+                        location_found = True
+                        break
 
             if not location_found:
                 # Default to Indianapolis
