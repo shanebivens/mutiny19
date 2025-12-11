@@ -101,6 +101,8 @@ class EventScraper:
                     self.scrape_meetup(source)
                 elif source['type'] == 'ical':
                     self.scrape_ical(source)
+                elif source['type'] == 'luma_event':
+                    self.scrape_luma(source)
                 elif source['type'] == 'custom':
                     self.scrape_custom(source)
             except Exception as e:
@@ -270,6 +272,106 @@ class EventScraper:
 
         except Exception as e:
             print(f"Error fetching iCal feed: {e}")
+
+    def scrape_luma(self, source: Dict[str, Any]):
+        """Scrape a single Luma event page"""
+        try:
+            html_content = self.fetch_with_playwright(
+                source['url'],
+                wait_selector='h1',
+                wait_time=5000
+            )
+            if not html_content:
+                print(f"  Could not fetch Luma event page")
+                return
+
+            soup = BeautifulSoup(html_content, 'html.parser')
+
+            # Extract title (usually in h1)
+            title_elem = soup.find('h1')
+            if not title_elem:
+                print(f"  Could not find title on Luma page")
+                return
+
+            title = title_elem.get_text(strip=True)
+
+            # Get description (look for common description patterns)
+            description = title
+            desc_elem = soup.find(['div', 'p'], class_=re.compile('description|about|details', re.I))
+            if desc_elem:
+                description = desc_elem.get_text(strip=True)[:500]
+
+            # Try to find date/time
+            # Luma often uses time elements with datetime attribute
+            date_elem = soup.find('time')
+            event_date = None
+
+            if date_elem and date_elem.get('datetime'):
+                try:
+                    from dateutil import parser as date_parser
+                    event_date = date_parser.parse(date_elem.get('datetime'))
+                    if event_date.tzinfo is not None:
+                        event_date = event_date.replace(tzinfo=None)
+                except:
+                    pass
+
+            # If no date found in time element, try to find in text
+            if not event_date:
+                # Look for common date patterns in the page text
+                date_text_elem = soup.find(['div', 'span', 'p'], class_=re.compile('date|time|when', re.I))
+                if date_text_elem:
+                    try:
+                        from dateutil import parser as date_parser
+                        event_date = date_parser.parse(date_text_elem.get_text())
+                        if event_date.tzinfo is not None:
+                            event_date = event_date.replace(tzinfo=None)
+                    except:
+                        pass
+
+            if not event_date:
+                # Default to a reasonable future date if we can't parse it
+                print(f"  Warning: Could not parse date for {title}, using placeholder")
+                event_date = datetime.now() + timedelta(days=7)
+
+            # Skip past events
+            if event_date < datetime.now():
+                print(f"  Skipping past event: {title}")
+                return
+
+            # Try to find location
+            location_text = None
+            location_elem = soup.find(['div', 'span', 'p'], class_=re.compile('location|venue|address|where', re.I))
+            if location_elem:
+                location_text = location_elem.get_text(strip=True)
+
+            # Build location data
+            location_data = {'name': 'Indianapolis', 'address': 'Indianapolis, IN', 'lat': 39.7684, 'lng': -86.1581}
+
+            if location_text:
+                # Try to extract city from location text
+                location_lower = location_text.lower()
+                if 'indianapolis' in location_lower or 'indy' in location_lower:
+                    location_data = {'name': location_text, 'address': 'Indianapolis, IN', 'lat': 39.7684, 'lng': -86.1581}
+                elif 'carmel' in location_lower:
+                    location_data = {'name': location_text, 'address': 'Carmel, IN', 'lat': 39.9784, 'lng': -86.1180}
+                elif 'fishers' in location_lower:
+                    location_data = {'name': location_text, 'address': 'Fishers, IN', 'lat': 39.9567, 'lng': -86.0139}
+                # Add more cities as needed
+
+            event_data = {
+                'title': title,
+                'description': description,
+                'url': source['url'],
+                'date': event_date.isoformat(),
+                'source': source.get('name', 'Luma Event'),
+                'location': location_data
+            }
+
+            self._add_event(event_data)
+            print(f"  Added Luma event: {title}")
+
+        except Exception as e:
+            print(f"  Error scraping Luma event: {e}")
 
     def scrape_custom(self, source: Dict[str, Any]):
         """Scrape custom sources (specific implementations)"""

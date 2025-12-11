@@ -622,6 +622,13 @@
       "url": "https://www.eventbrite.com/d/united-states--indiana/energy/",
       "enabled": true,
       "description": "Energy, battery, and cleantech events in Indiana"
+    },
+    {
+      "name": "Indy Tech Founders Happy Hour",
+      "type": "luma_event",
+      "url": "https://luma.com/7e18504n",
+      "enabled": true,
+      "description": "Indianapolis tech founders networking event"
     }
   ],
   "keywords": [
