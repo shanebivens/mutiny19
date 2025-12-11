@@ -136,7 +136,7 @@ const translations = {
         'docs.fast.pirate': 'Keep your advisors honest. Fair shares for those who actually help sail the ship.',
 
         // Story
-        'story.title': 'THE TALE OF CAPTAIN CARDINAL',
+        'story.title': 'THE TALE OF XIX CAPTAIN CARDINAL',
         'story.hint': '// Origin Story',
         'story.ch1.title': 'CHAPTER I: THE GIFT OF THE PORTS',
         'story.ch1.p1': 'Captain Cardinal had sailed the startup seas for three glorious years, building a vessel of pure innovation—an AI-powered navigation system that could chart courses through uncharted waters. The journey began at ports built by pioneering navigators who\'d first mapped Indiana\'s entrepreneurial waters decades before.',
@@ -347,7 +347,7 @@ const translations = {
         'docs.fast.pirate': 'Mantén honestos a tus asesores. Partes justas para quienes realmente ayudan a navegar.',
 
         // Story
-        'story.title': 'EL CUENTO DEL CAPITÁN CARDENAL',
+        'story.title': 'EL CUENTO DEL XIX CAPITÁN CARDENAL',
         'story.hint': '// Historia de Origen',
         'story.ch1.title': 'CAPÍTULO I: EL REGALO DE LOS PUERTOS',
         'story.ch1.p1': 'El Capitán Cardenal había navegado los mares de startups durante tres gloriosos años, construyendo un navío de pura innovación—un sistema de navegación impulsado por IA que podía trazar cursos a través de aguas inexploradas. El viaje comenzó en puertos construidos por navegantes pioneros que habían mapeado las aguas emprendedoras de Indiana décadas antes.',
